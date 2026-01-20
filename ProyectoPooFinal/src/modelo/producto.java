@@ -13,18 +13,21 @@ public class producto {
     private String nombre;
     private double precio;
     private int stock;
+    private int id_categoria;
     
-    public producto(int id, String nombre, double precio,int stock){
+    public producto(int id, String nombre, double precio,int stock,int id_categoria){
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
+        this.id_categoria = id_categoria;
     }
     
-    public producto(String nombre, double precio, int stock){
+    public producto(String nombre, double precio, int stock,int id_categoria){
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
+        this.id_categoria = id_categoria;
     }
 
     public int getId() {
@@ -57,6 +60,14 @@ public class producto {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
     
      
