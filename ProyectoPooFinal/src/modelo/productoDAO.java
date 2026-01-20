@@ -88,6 +88,28 @@ public class productoDAO {
         }
     }
     
+    public boolean eliminar(int id) {
+        String sql = "DELETE FROM productos WHERE id_producto = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            int filas = ps.executeUpdate();
+            return filas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+}
+
+    
+    
+    
+    
     
 
     
