@@ -22,14 +22,15 @@ public class productoDAO {
         String url = "jdbc:sqlite:data/almacen.db";
         try(Connection conexion = DriverManager.getConnection(url)){
             Statement stmt = conexion.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT id,nombre,precio,stock FROM productos");
+            ResultSet rs = stmt.executeQuery("SELECT id,nombre,precio,stock,id_categoria FROM productos");
             while(rs.next()){
                 int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
                 double precio = rs.getDouble("precio");
                 int stock = rs.getInt("stock");
+                int id_categoria = rs.getInt("id_categoria");
                 
-                producto p = new producto(id,nombre,precio,stock);
+                producto p = new producto(id,nombre,precio,stock,id_categoria);
                 lista.add(p);
             }
             
@@ -42,7 +43,7 @@ public class productoDAO {
     }
     
     public boolean insertar(producto p) {
-        String sql = "INSERT INTO productos(nombre, precio, stock) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO productos(nombre, precio, stock,id_categoria) VALUES (?, ?, ?,?)";
         String url = "jdbc:sqlite:data/almacen.db";
 
         try (Connection con = DriverManager.getConnection(url);
@@ -51,6 +52,7 @@ public class productoDAO {
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
             ps.setInt(3, p.getStock());
+            ps.setInt(4, p.getId_categoria());
 
             int filas = ps.executeUpdate();
             return filas > 0;
