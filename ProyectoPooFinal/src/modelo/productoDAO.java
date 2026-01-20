@@ -89,7 +89,7 @@ public class productoDAO {
     }
     
     public boolean eliminar(int id) {
-        String sql = "DELETE FROM productos WHERE id_producto = ?";
+        String sql = "DELETE FROM productos WHERE id = ?";
         String url = "jdbc:sqlite:data/almacen.db";
 
         try (Connection conexion = DriverManager.getConnection(url);
