@@ -41,26 +41,26 @@ public class productoDAO {
         
     }
     
-    public List<producto> insertar(producto p){
-        List<producto> lista = new ArrayList<>();
+    public boolean insertar(producto p) {
+        String sql = "INSERT INTO productos(nombre, precio, stock) VALUES (?, ?, ?)";
         String url = "jdbc:sqlite:data/almacen.db";
-        String agregar = "INSERT INTO producto(nombre,producto,stock) VALUES (?,?,?)";
-        try(Connection conexion = DriverManager.getConnection(url)){
-            PreparedStatement ps = conexion.prepareStatement(agregar);
+
+        try (Connection con = DriverManager.getConnection(url);
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
             ps.setInt(3, p.getStock());
-            
-            ps.executeUpdate();
-            
-            lista = listar();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
 
-        
-        return lista;
+            int filas = ps.executeUpdate();
+            return filas > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
     
     
 }
