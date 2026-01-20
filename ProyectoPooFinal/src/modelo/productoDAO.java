@@ -62,6 +62,33 @@ public class productoDAO {
             return false;
         }
     }
+    
+    public boolean actualizar(producto p){
+        String sql = "UPDATE productos SET nombre = ?, precio = ?, stock = ?, id_categoria = ? "
+               + "WHERE id_producto = ?";
+
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conn = DriverManager.getConnection(url);
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, p.getNombre());
+            ps.setDouble(2, p.getPrecio());
+            ps.setInt(3, p.getStock());
+            ps.setInt(4, p.getId_categoria());
+
+            ps.setInt(5, p.getId());
+
+            int filas = ps.executeUpdate();
+            return filas > 0;
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
 
     
     
