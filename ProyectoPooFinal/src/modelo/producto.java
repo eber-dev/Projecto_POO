@@ -20,6 +20,12 @@ public class producto {
         this.precio = precio;
         this.stock = stock;
     }
+    
+    public producto(String nombre, double precio, int stock){
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
 
     public int getId() {
         return id;
