@@ -46,8 +46,8 @@ public class productoDAO {
         String sql = "INSERT INTO productos(nombre, precio, stock,id_categoria) VALUES (?, ?, ?,?)";
         String url = "jdbc:sqlite:data/almacen.db";
 
-        try (Connection con = DriverManager.getConnection(url);
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (Connection conexion = DriverManager.getConnection(url);
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
@@ -69,8 +69,8 @@ public class productoDAO {
 
         String url = "jdbc:sqlite:data/almacen.db";
         
-        try(Connection conn = DriverManager.getConnection(url);
-         PreparedStatement ps = conn.prepareStatement(sql)) {
+        try(Connection conexion = DriverManager.getConnection(url);
+         PreparedStatement ps = conexion.prepareStatement(sql)) {
             
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
@@ -92,8 +92,8 @@ public class productoDAO {
         String sql = "DELETE FROM productos WHERE id_producto = ?";
         String url = "jdbc:sqlite:data/almacen.db";
 
-        try (Connection conn = DriverManager.getConnection(url);
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conexion = DriverManager.getConnection(url);
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setInt(1, id);
 
