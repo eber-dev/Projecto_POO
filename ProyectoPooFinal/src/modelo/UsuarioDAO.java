@@ -15,33 +15,34 @@ import java.sql.ResultSet;
  */
 public class UsuarioDAO {
     
-    public String[][] login (){
-        String[][] credenciales = new String[2][2];
-        String[] usuario = new String[2];
-        String[] contraseña = new String[2];
-        int a = 0;
+    public Usuario login (String user,String password){
+        Usuario credencial = new Usuario(user ,password);
+        String[] usuario  = new String[2];
+        String[] contraseña  = new String[2];
+        int contador = 0;
         String url = "jdbc:sqlite:data/almacen.db";
-        try(Connection conexion = DriverManager.getConnection(url);
-            Statement stmt = conexion.createStatement()){
-              ResultSet rs = stmt.executeQuery("SELECT usuario,password FROM usuarios");
-              while(rs.next()&& a<2){
-                   usuario[a] = rs.getString("usuario");
-                   contraseña[a] = rs.getString("password");
-                   a++;
-              }
-              
-              for(int i=0; i<credenciales.length;i++){
-                  credenciales[0][i]=usuario[i];
-              }
-              
-              for(int i = 0;i<credenciales.length;i++){
-                  credenciales[1][i] = contraseña[i];
-              }
-                    
+        try(Connection conexion = DriverManager.getConnection(url)){
+            Statement stmt = conexion.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT usuario,password FROM usuarios");
+            while(rs.next()&& contador<2){
+                usuario[contador] = rs.getString("usuario");
+                contraseña[contador] = rs.getString("password");
+                contador++;
+            }
+            
+            boolean condicion1 = credencial.getUsuario().equals(usuario[0])&&credencial.getPassword().equals(contraseña[0]);
+            boolean condicion2 = credencial.getUsuario().equals(usuario[1])&&credencial.getPassword().equals(contraseña[1]);
+            
+            if(condicion1 || condicion2){
+                return credencial;
+            }
+            
+            
         }catch(SQLException e){
             e.printStackTrace();
-        }   
-        return credenciales;
+        }
+        
+        return null;
     }
-    
+        
 }
