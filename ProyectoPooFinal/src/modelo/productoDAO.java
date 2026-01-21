@@ -125,6 +125,27 @@ public class productoDAO {
         }
     }
     
+    
+    public boolean actualizar_stock(int id,int stock){
+        String sql = "UPDATE productos SET stock = ?"+"WHERE id = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+         PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            ps.setInt(1,stock);
+            ps.setInt(2, id);
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        
+    }
+        
     public boolean eliminar(int id) {
         String sql = "DELETE FROM productos WHERE id = ?";
         String url = "jdbc:sqlite:data/almacen.db";
