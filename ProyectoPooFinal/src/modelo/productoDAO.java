@@ -107,6 +107,24 @@ public class productoDAO {
         
     }
     
+    public boolean actualizar_precio(int id,double precio){
+        String sql = "UPDATE productos SET precio = ?"+"WHERE id = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+         PreparedStatement ps = conexion.prepareStatement(sql)){
+            ps.setDouble(1, precio);
+            ps.setInt(2, id);
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public boolean eliminar(int id) {
         String sql = "DELETE FROM productos WHERE id = ?";
         String url = "jdbc:sqlite:data/almacen.db";
