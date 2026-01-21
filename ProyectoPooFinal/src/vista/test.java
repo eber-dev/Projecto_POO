@@ -11,6 +11,7 @@ import modelo.UsuarioDAO;
 import modelo.producto;
 import modelo.productoDAO;
 import java.util.Scanner;
+import modelo.Usuario;
 
 /**
  *
@@ -18,23 +19,15 @@ import java.util.Scanner;
  */
 public class test {
     public static void main(String[] args) {
+        String a,b;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese su usuario: ");
+        a= lector.nextLine();
+        System.out.println("Ingrese su contraseña: ");
+        b= lector.nextLine();
+        UsuarioDAO dao = new UsuarioDAO();
+        dao.login(a,b);
         
-        /*productoDAO dao = new productoDAO();
-        producto producto = new producto("Teclado 2.0",90,8,4);*/
-        
-        
-        UsuarioDAO credenciales = new UsuarioDAO();
-        String[][] fijas = credenciales.login();
-        
-            System.out.println(fijas[0][0]); // 1
-            System.out.println(fijas[0][1]); // 2
-            System.out.println(fijas[1][0]); // 3
-            System.out.println(fijas[1][1]); // 4
-
-        
-        
-        /*if(dao.insertar(producto)){
-            System.out.println("Producto insertado exitosamente");
-        }*/   
     }
+        
 }
