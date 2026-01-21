@@ -65,7 +65,7 @@ public class productoDAO {
     
     public boolean actualizar(producto p){
         String sql = "UPDATE productos SET nombre = ?, precio = ?, stock = ?, id_categoria = ? "
-               + "WHERE id_producto = ?";
+               + "WHERE id = ?";
 
         String url = "jdbc:sqlite:data/almacen.db";
         
@@ -86,6 +86,25 @@ public class productoDAO {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    public boolean actualizar_nombre(int id, String Nombre){
+        String sql = "UPDATE productos SET nombre = ? "+"WHERE id = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+         PreparedStatement ps = conexion.prepareStatement(sql)){
+            ps.setString(1,Nombre);
+            ps.setInt(2, id);
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+        
     }
     
     public boolean eliminar(int id) {
