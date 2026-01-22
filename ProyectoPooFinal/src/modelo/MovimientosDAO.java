@@ -22,6 +22,7 @@ public class MovimientosDAO {
         String url = "jdbc:sqlite:data/almacen.db";
         try(Connection conexion = DriverManager.getConnection(url)){
             Statement stmt = conexion.createStatement();
+            stmt.execute("PRAGMA foreign_keys = ON");
             ResultSet rs = stmt.executeQuery("SELECT id_movimiento,id_producto,tipo,cantidad,fecha FROM movimientos_stock");
             while(rs.next()){
                 int id_movimiento = rs.getInt("id_movimiento");
@@ -47,6 +48,11 @@ public class MovimientosDAO {
         
         try(Connection conexion = DriverManager.getConnection(url);
              PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
             ps.setInt(1, m.getId_producto());
             ps.setString(2,m.getTipo());
             ps.setInt(3, m.getCantidad());
