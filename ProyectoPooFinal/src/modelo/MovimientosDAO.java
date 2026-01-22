@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 /**
  *
  * @author EBER
@@ -38,6 +39,26 @@ public class MovimientosDAO {
         }
         
         return lista;
+    }
+    
+    public boolean insertar(Movimiento m){
+        String sql = "INSERT INTO movimientos_stock(id_producto,tipo,cantidad,fecha) VALUES (?, ?, ?,?)";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+             PreparedStatement ps = conexion.prepareStatement(sql)){
+            ps.setInt(1, m.getId_producto());
+            ps.setString(2,m.getTipo());
+            ps.setInt(3, m.getCantidad());
+            ps.setString(4, m.getFecha());
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
     
 }
