@@ -22,6 +22,7 @@ public class productoDAO {
         String url = "jdbc:sqlite:data/almacen.db";
         try(Connection conexion = DriverManager.getConnection(url)){
             Statement stmt = conexion.createStatement();
+            stmt.execute("PRAGMA foreign_keys = ON");
             ResultSet rs = stmt.executeQuery("SELECT id,nombre,precio,stock,id_categoria FROM productos");
             while(rs.next()){
                 int id = rs.getInt("id");
@@ -48,6 +49,10 @@ public class productoDAO {
 
         try (Connection conexion = DriverManager.getConnection(url);
              PreparedStatement ps = conexion.prepareStatement(sql)) {
+            
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
 
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
@@ -72,6 +77,11 @@ public class productoDAO {
         try(Connection conexion = DriverManager.getConnection(url);
          PreparedStatement ps = conexion.prepareStatement(sql)) {
             
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
+            
             ps.setString(1, p.getNombre());
             ps.setDouble(2, p.getPrecio());
             ps.setInt(3, p.getStock());
@@ -94,6 +104,11 @@ public class productoDAO {
         
         try(Connection conexion = DriverManager.getConnection(url);
          PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
             ps.setString(1,Nombre);
             ps.setInt(2, id);
             
@@ -113,6 +128,11 @@ public class productoDAO {
         
         try(Connection conexion = DriverManager.getConnection(url);
          PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
             ps.setDouble(1, precio);
             ps.setInt(2, id);
             
@@ -133,6 +153,11 @@ public class productoDAO {
         try(Connection conexion = DriverManager.getConnection(url);
          PreparedStatement ps = conexion.prepareStatement(sql)){
             
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
+            
             ps.setInt(1,stock);
             ps.setInt(2, id);
             
@@ -152,6 +177,11 @@ public class productoDAO {
 
         try (Connection conexion = DriverManager.getConnection(url);
              PreparedStatement ps = conexion.prepareStatement(sql)) {
+            
+            
+            try (Statement stmt = conexion.createStatement()) {
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
 
             ps.setInt(1, id);
 
