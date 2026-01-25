@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.UsuarioDAO;
 import modelo.producto;
@@ -23,28 +24,25 @@ import modelo.Usuario;
  */
 public class test {
     public static void main(String[] args) throws SQLException {
-        /*String a,b;
-        Scanner lector = new Scanner(System.in);
-        System.out.println("Ingrese su usuario: ");
-        a= lector.nextLine();
-        System.out.println("Ingrese su contraseña: ");
-        b= lector.nextLine();
-        UsuarioDAO dao = new UsuarioDAO();
-        dao.login(a,b);*/
+        UsuarioDAO d = new UsuarioDAO();
+        /*List<Usuario> val = d.listar();
         
-        MovimientosDAO mov = new MovimientosDAO();
-        /*List<Movimiento> transaccion = mov.listar();
-        
-        for(Movimiento e: transaccion){
-            System.out.println(e.getTipo());
+        for(Usuario p: val){
+            System.out.println(p.getNombre());
         }*/
         
-        Movimiento ga = new Movimiento(6,"ENTRADA",18,"2026-01-22");
-        if(mov.insertar(ga)){
-            System.out.println("mal");
+        /*Usuario u = new Usuario("Juan","Perez","juanperez","1234","USER");*/
+        
+        if(d.eliminar(3)){
+            System.out.println("Nice");
         }else{
-            System.out.println("nice");
-        }     
+            System.out.println("no");
+        }
+        
+        
+        
+        
+        
     }
         
 }
