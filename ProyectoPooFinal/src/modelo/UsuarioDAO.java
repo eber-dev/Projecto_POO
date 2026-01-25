@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,49 @@ public class UsuarioDAO {
         }
         
         return lista;
+    }
+    
+    public boolean insertar(Usuario u){
+        String sql = "INSERT INTO usuarios(nombre,apellido,usuario,password,rol) VALUES (?,?,?,?,?)";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion= DriverManager.getConnection(url);
+            PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApellido());
+            ps.setString(3, u.getUsuario());
+            ps.setString(4, u.getPassword());
+            ps.setString(5, u.getRol());
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean eliminar(int id){
+        String sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+            PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            ps.setInt(1, id);
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
+
     }
     
     
