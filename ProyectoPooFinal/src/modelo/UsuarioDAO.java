@@ -8,41 +8,39 @@ import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author EBER
  */
 public class UsuarioDAO {
-    
-    public Usuario login (String user,String password){
-        Usuario credencial = new Usuario(user ,password);
-        String[] usuario  = new String[2];
-        String[] contraseña  = new String[2];
-        int contador = 0;
+    public List<Usuario>listar(){
+        List<Usuario> lista = new ArrayList<>();
         String url = "jdbc:sqlite:data/almacen.db";
         try(Connection conexion = DriverManager.getConnection(url)){
             Statement stmt = conexion.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT usuario,password FROM usuarios");
-            while(rs.next()&& contador<2){
-                usuario[contador] = rs.getString("usuario");
-                contraseña[contador] = rs.getString("password");
-                contador++;
+            ResultSet rs = stmt.executeQuery("SELECT id_usuario,nombre,apellido,usuario,password,rol FROM usuarios");
+            while(rs.next()){
+                int id_usuario = rs.getInt("id_usuario");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String usuario = rs.getString("usuario");
+                String password = rs.getString("password");
+                String rol = rs.getString("rol");
+                
+                Usuario credencial = new Usuario(id_usuario,nombre,apellido,usuario,password,rol);
+                
+                lista.add(credencial);
             }
-            
-            boolean condicion1 = credencial.getUsuario().equals(usuario[0])&&credencial.getPassword().equals(contraseña[0]);
-            boolean condicion2 = credencial.getUsuario().equals(usuario[1])&&credencial.getPassword().equals(contraseña[1]);
-            
-            if(condicion1 || condicion2){
-                return credencial;
-            }
-            
-            
         }catch(SQLException e){
             e.printStackTrace();
         }
         
-        return null;
+        return lista;
     }
+    
+    
         
 }
