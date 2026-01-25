@@ -25,9 +25,12 @@ public class Usuario {
         this.rol = rol;
     }
     
-    public Usuario(String usuario,String password){
+    public Usuario(String nombre,String apellido,String usuario,String password,String rol){
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.usuario = usuario;
         this.password = password;
+        this.rol = rol;
     }
     
 
