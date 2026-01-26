@@ -188,6 +188,9 @@ public class FrmLogin extends javax.swing.JFrame {
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
+        FrmDatos datos = new FrmDatos();
+        datos.setVisible(true);
+        dispose();
     }//GEN-LAST:event_RegistrarActionPerformed
 
     private void CampoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContraseñaActionPerformed
