@@ -33,11 +33,17 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         CampoLaptops = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         CampoPC = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         CampoComponentes = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         CampoCelulares = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         CampoAccesorios = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         CampoRedes = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         Ilustracion = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JButton();
 
@@ -45,80 +51,128 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/laptop_5642 (1) (1).png"))); // NOI18N
+
         javax.swing.GroupLayout CampoLaptopsLayout = new javax.swing.GroupLayout(CampoLaptops);
         CampoLaptops.setLayout(CampoLaptopsLayout);
         CampoLaptopsLayout.setHorizontalGroup(
             CampoLaptopsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoLaptopsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoLaptopsLayout.setVerticalGroup(
             CampoLaptopsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoLaptopsLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Laptops", CampoLaptops);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/PC (1).png"))); // NOI18N
 
         javax.swing.GroupLayout CampoPCLayout = new javax.swing.GroupLayout(CampoPC);
         CampoPC.setLayout(CampoPCLayout);
         CampoPCLayout.setHorizontalGroup(
             CampoPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoPCLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoPCLayout.setVerticalGroup(
             CampoPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoPCLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel2)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PC Escritorio", CampoPC);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/componenetes (1).png"))); // NOI18N
 
         javax.swing.GroupLayout CampoComponentesLayout = new javax.swing.GroupLayout(CampoComponentes);
         CampoComponentes.setLayout(CampoComponentesLayout);
         CampoComponentesLayout.setHorizontalGroup(
             CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoComponentesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoComponentesLayout.setVerticalGroup(
             CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoComponentesLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel4)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Componentes", CampoComponentes);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/celular (1).png"))); // NOI18N
 
         javax.swing.GroupLayout CampoCelularesLayout = new javax.swing.GroupLayout(CampoCelulares);
         CampoCelulares.setLayout(CampoCelularesLayout);
         CampoCelularesLayout.setHorizontalGroup(
             CampoCelularesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoCelularesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoCelularesLayout.setVerticalGroup(
             CampoCelularesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoCelularesLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel3)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Celulares", CampoCelulares);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/mouse (1).png"))); // NOI18N
 
         javax.swing.GroupLayout CampoAccesoriosLayout = new javax.swing.GroupLayout(CampoAccesorios);
         CampoAccesorios.setLayout(CampoAccesoriosLayout);
         CampoAccesoriosLayout.setHorizontalGroup(
             CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoAccesoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoAccesoriosLayout.setVerticalGroup(
             CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoAccesoriosLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel5)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Accesorios", CampoAccesorios);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/redes (1).png"))); // NOI18N
 
         javax.swing.GroupLayout CampoRedesLayout = new javax.swing.GroupLayout(CampoRedes);
         CampoRedes.setLayout(CampoRedesLayout);
         CampoRedesLayout.setHorizontalGroup(
             CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(CampoRedesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         CampoRedesLayout.setVerticalGroup(
             CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(CampoRedesLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel6)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Redes", CampoRedes);
@@ -204,6 +258,12 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JPanel CampoRedes;
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JLabel Ilustracion;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
