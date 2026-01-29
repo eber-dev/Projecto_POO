@@ -531,6 +531,9 @@ public class FrmProductos extends javax.swing.JFrame {
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
         // TODO add your handling code here:
+        FrmLogin log = new FrmLogin();
+        log.setVisible(true);
+        dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
