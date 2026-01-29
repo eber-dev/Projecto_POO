@@ -180,9 +180,16 @@ public class FrmLogin extends javax.swing.JFrame {
         String contraseña = CampoContraseña.getText();
         ControladorLogin cl = new ControladorLogin();
         String val = cl.validar(usuario, contraseña);
-        if(val!=null){
-            JOptionPane.showMessageDialog(this, "Haz ingresado al sistema correctamente");
+        switch(val){
+            case "admin":
+                break;
+            case "user":
+                FrmProductos prod = new FrmProductos();
+                prod.setVisible(true);
+                dispose();
+                break;
         }
+        
     }//GEN-LAST:event_IngresarActionPerformed
 
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
