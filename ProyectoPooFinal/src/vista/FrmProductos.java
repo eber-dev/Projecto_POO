@@ -84,6 +84,7 @@ public class FrmProductos extends javax.swing.JFrame {
         jSpinner3 = new javax.swing.JSpinner();
         Componentes = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        CampoPerifericos = new javax.swing.JPanel();
         CampoCelulares = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -178,7 +179,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jSpinner1))
                         .addGap(65, 65, 65)
                         .addComponent(jButton1)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Laptops", CampoLaptops);
@@ -241,7 +242,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(Pc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)
                         .addComponent(jButton2)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PC Escritorio", CampoPC);
@@ -304,10 +305,23 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(Componentes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
                         .addComponent(jButton3)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Componentes", CampoComponentes);
+
+        javax.swing.GroupLayout CampoPerifericosLayout = new javax.swing.GroupLayout(CampoPerifericos);
+        CampoPerifericos.setLayout(CampoPerifericosLayout);
+        CampoPerifericosLayout.setHorizontalGroup(
+            CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 727, Short.MAX_VALUE)
+        );
+        CampoPerifericosLayout.setVerticalGroup(
+            CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Perifericos", CampoPerifericos);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/celular (1).png"))); // NOI18N
 
@@ -367,7 +381,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(Celulares, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
                         .addComponent(jButton4)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Celulares", CampoCelulares);
@@ -430,7 +444,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addComponent(jButton5)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Accesorios", CampoAccesorios);
@@ -493,7 +507,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jSpinner6))
                         .addGap(55, 55, 55)
                         .addComponent(jButton6)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Redes", CampoRedes);
@@ -621,6 +635,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JPanel CampoComponentes;
     private javax.swing.JPanel CampoLaptops;
     private javax.swing.JPanel CampoPC;
+    private javax.swing.JPanel CampoPerifericos;
     private javax.swing.JPanel CampoRedes;
     private javax.swing.JComboBox<String> Celulares;
     private javax.swing.JButton CerrarSesion;
