@@ -40,13 +40,16 @@ public class FrmProductos extends javax.swing.JFrame {
                     Componentes.addItem(p.getNombre());
                     break;
                 case 4:
+                    Perifericos.addItem(p.getNombre());
                     break;
                 case 5:
+                    Celulares.addItem(p.getNombre());
                     break;
                 case 6:
-                    
+                    Accesorios.addItem(p.getNombre());
                     break;
                 case 7:
+                    Redes.addItem(p.getNombre());
                     break;
             }
         }
@@ -85,6 +88,12 @@ public class FrmProductos extends javax.swing.JFrame {
         Componentes = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         CampoPerifericos = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        Perifericos = new javax.swing.JComboBox<>();
+        jSpinner7 = new javax.swing.JSpinner();
+        jButton7 = new javax.swing.JButton();
         CampoCelulares = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -310,15 +319,65 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Componentes", CampoComponentes);
 
+        jLabel37.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel37.setText("SELECCIONE EL PRODUCTO:");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/mouse (1).png"))); // NOI18N
+
+        jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel38.setText("CANTIDAD:");
+
+        jButton7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        jButton7.setText("Añadir al Carrito");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout CampoPerifericosLayout = new javax.swing.GroupLayout(CampoPerifericos);
         CampoPerifericos.setLayout(CampoPerifericosLayout);
         CampoPerifericosLayout.setHorizontalGroup(
             CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 727, Short.MAX_VALUE)
+            .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37)
+                            .addComponent(Perifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                        .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSpinner7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(76, 76, 76))
+                    .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jButton7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoPerifericosLayout.setVerticalGroup(
             CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 299, Short.MAX_VALUE)
+            .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel11))
+                    .addGroup(CampoPerifericosLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel38))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Perifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton7)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Perifericos", CampoPerifericos);
@@ -386,7 +445,7 @@ public class FrmProductos extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Celulares", CampoCelulares);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/mouse (1).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/accesorio (1).png"))); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel31.setText("SELECCIONE EL PRODUCTO:");
@@ -433,18 +492,17 @@ public class FrmProductos extends javax.swing.JFrame {
                 .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
-                .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CampoAccesoriosLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel5))
-                    .addGroup(CampoAccesoriosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Accesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton5)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Accesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(jButton5)
+                .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CampoAccesoriosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(47, 47, 47))
         );
 
         jTabbedPane1.addTab("Accesorios", CampoAccesorios);
@@ -603,6 +661,10 @@ public class FrmProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LaptopActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -643,6 +705,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JLabel Ilustracion;
     private javax.swing.JComboBox<String> Laptop;
     private javax.swing.JComboBox<String> Pc;
+    private javax.swing.JComboBox<String> Perifericos;
     private javax.swing.JComboBox<String> Redes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -650,8 +713,10 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -664,6 +729,8 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -676,6 +743,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JSpinner jSpinner7;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
