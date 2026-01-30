@@ -70,55 +70,56 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Laptop = new javax.swing.JComboBox<>();
-        jSpinner1 = new javax.swing.JSpinner();
+        CantidadLaptop = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        añadir1 = new javax.swing.JButton();
         CampoPC = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        CantidadPc = new javax.swing.JSpinner();
         Pc = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        añadir2 = new javax.swing.JButton();
         CampoComponentes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        CantidadComponentes = new javax.swing.JSpinner();
         Componentes = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        añadir3 = new javax.swing.JButton();
         CampoPerifericos = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         Perifericos = new javax.swing.JComboBox<>();
-        jSpinner7 = new javax.swing.JSpinner();
-        jButton7 = new javax.swing.JButton();
+        CantidadPerifericos = new javax.swing.JSpinner();
+        añadir4 = new javax.swing.JButton();
         CampoCelulares = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jSpinner4 = new javax.swing.JSpinner();
+        CantidadCelulares = new javax.swing.JSpinner();
         Celulares = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        añadir7 = new javax.swing.JButton();
         CampoAccesorios = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
-        jSpinner5 = new javax.swing.JSpinner();
+        CantidadAccesorios = new javax.swing.JSpinner();
         Accesorios = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        añadir8 = new javax.swing.JButton();
         CampoRedes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jSpinner6 = new javax.swing.JSpinner();
+        CantidadRedes = new javax.swing.JSpinner();
         Redes = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
+        añadir9 = new javax.swing.JButton();
         Ilustracion = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        VerCarrito = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,12 +139,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("CANTIDAD:");
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton1.setText("Añadir al Carrito");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        añadir1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir1.setText("Añadir al Carrito");
+        añadir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                añadir1ActionPerformed(evt);
             }
         });
 
@@ -163,11 +164,11 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addGroup(CampoLaptopsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CantidadLaptop, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CampoLaptopsLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(añadir1)
                         .addGap(168, 168, 168))))
         );
         CampoLaptopsLayout.setVerticalGroup(
@@ -185,10 +186,10 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CampoLaptopsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Laptop, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jSpinner1))
+                            .addComponent(CantidadLaptop))
                         .addGap(65, 65, 65)
-                        .addComponent(jButton1)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addComponent(añadir1)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Laptops", CampoLaptops);
@@ -201,12 +202,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("CANTIDAD:");
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton2.setText("Añadir al Carrito");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        añadir2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir2.setText("Añadir al Carrito");
+        añadir2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                añadir2ActionPerformed(evt);
             }
         });
 
@@ -226,11 +227,11 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                         .addGroup(CampoPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner2))
+                            .addComponent(CantidadPc))
                         .addGap(78, 78, 78))
                     .addGroup(CampoPCLayout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addComponent(jButton2)
+                        .addComponent(añadir2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoPCLayout.setVerticalGroup(
@@ -247,11 +248,11 @@ public class FrmProductos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CampoPCLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(CampoPCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CantidadPc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Pc, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(65, 65, 65)
-                        .addComponent(jButton2)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(añadir2)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PC Escritorio", CampoPC);
@@ -264,12 +265,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel33.setText("CANTIDAD:");
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton3.setText("Añadir al Carrito");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        añadir3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir3.setText("Añadir al Carrito");
+        añadir3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                añadir3ActionPerformed(evt);
             }
         });
 
@@ -282,19 +283,19 @@ public class FrmProductos extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CampoComponentesLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(añadir3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(CampoComponentesLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Componentes, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                        .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner3))
-                        .addGap(60, 60, 60))
-                    .addGroup(CampoComponentesLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(CantidadComponentes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60))))
         );
         CampoComponentesLayout.setVerticalGroup(
             CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,11 +311,11 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jLabel33))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CantidadComponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Componentes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
-                        .addComponent(jButton3)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(añadir3)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Componentes", CampoComponentes);
@@ -327,12 +328,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel38.setText("CANTIDAD:");
 
-        jButton7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton7.setText("Añadir al Carrito");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        añadir4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir4.setText("Añadir al Carrito");
+        añadir4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                añadir4ActionPerformed(evt);
             }
         });
 
@@ -352,11 +353,11 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
                         .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSpinner7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CantidadPerifericos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(76, 76, 76))
                     .addGroup(CampoPerifericosLayout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(jButton7)
+                        .addComponent(añadir4)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoPerifericosLayout.setVerticalGroup(
@@ -374,10 +375,10 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(CampoPerifericosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Perifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CantidadPerifericos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
-                        .addComponent(jButton7)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addComponent(añadir4)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Perifericos", CampoPerifericos);
@@ -390,12 +391,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel34.setText("CANTIDAD:");
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton4.setText("Añadir al Carrito");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        añadir7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir7.setText("Añadir al Carrito");
+        añadir7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                añadir7ActionPerformed(evt);
             }
         });
 
@@ -415,11 +416,11 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                         .addGroup(CampoCelularesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner4))
+                            .addComponent(CantidadCelulares))
                         .addGap(66, 66, 66))
                     .addGroup(CampoCelularesLayout.createSequentialGroup()
                         .addGap(150, 150, 150)
-                        .addComponent(jButton4)
+                        .addComponent(añadir7)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoCelularesLayout.setVerticalGroup(
@@ -436,11 +437,11 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jLabel34))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(CampoCelularesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CantidadCelulares, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Celulares, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
-                        .addComponent(jButton4)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(añadir7)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Celulares", CampoCelulares);
@@ -453,12 +454,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel35.setText("CANTIDAD:");
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton5.setText("Añadir al Carrito");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        añadir8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir8.setText("Añadir al Carrito");
+        añadir8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                añadir8ActionPerformed(evt);
             }
         });
 
@@ -478,11 +479,11 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                         .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner5))
+                            .addComponent(CantidadAccesorios))
                         .addGap(72, 72, 72))
                     .addGroup(CampoAccesoriosLayout.createSequentialGroup()
                         .addGap(153, 153, 153)
-                        .addComponent(jButton5)
+                        .addComponent(añadir8)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoAccesoriosLayout.setVerticalGroup(
@@ -495,10 +496,10 @@ public class FrmProductos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CampoAccesoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Accesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CantidadAccesorios, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
-                .addComponent(jButton5)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(añadir8)
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CampoAccesoriosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -515,12 +516,12 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel36.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel36.setText("CANTIDAD:");
 
-        jButton6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
-        jButton6.setText("Añadir al Carrito");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        añadir9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        añadir9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carrito.png"))); // NOI18N
+        añadir9.setText("Añadir al Carrito");
+        añadir9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                añadir9ActionPerformed(evt);
             }
         });
 
@@ -540,21 +541,18 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                         .addGroup(CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinner6))
+                            .addComponent(CantidadRedes))
                         .addGap(66, 66, 66))
                     .addGroup(CampoRedesLayout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(jButton6)
+                        .addComponent(añadir9)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         CampoRedesLayout.setVerticalGroup(
             CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CampoRedesLayout.createSequentialGroup()
-                .addGroup(CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CampoRedesLayout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CampoRedesLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -562,10 +560,13 @@ public class FrmProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(CampoRedesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Redes, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jSpinner6))
+                            .addComponent(CantidadRedes))
                         .addGap(55, 55, 55)
-                        .addComponent(jButton6)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addComponent(añadir9))
+                    .addGroup(CampoRedesLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel6)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Redes", CampoRedes);
@@ -583,7 +584,14 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel9.setText("TIENDA DE TECNOLOGIA");
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/marca (1).png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/marca (2).png"))); // NOI18N
+
+        VerCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/ver carro.png"))); // NOI18N
+        VerCarrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerCarritoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -596,8 +604,10 @@ public class FrmProductos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(VerCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
                 .addComponent(CerrarSesion)
-                .addGap(55, 55, 55))
+                .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Ilustracion)
@@ -608,15 +618,18 @@ public class FrmProductos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(VerCarrito))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(CerrarSesion))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(10, 10, 10))
-                            .addComponent(CerrarSesion)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel10)))
+                            .addComponent(jLabel10)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel9)))))
                 .addGap(18, 18, 18)
                 .addComponent(Ilustracion)
                 .addGap(18, 18, 18)
@@ -633,37 +646,44 @@ public class FrmProductos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_CerrarSesionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void añadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_añadir1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void añadir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_añadir2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void añadir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_añadir3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void añadir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_añadir7ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void añadir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_añadir8ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void añadir9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_añadir9ActionPerformed
 
     private void LaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaptopActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_LaptopActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void añadir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_añadir4ActionPerformed
+
+    private void VerCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCarritoActionPerformed
+        // TODO add your handling code here:
+        FrmCarrito carro = new FrmCarrito();
+        carro.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_VerCarritoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -699,6 +719,13 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JPanel CampoPC;
     private javax.swing.JPanel CampoPerifericos;
     private javax.swing.JPanel CampoRedes;
+    private javax.swing.JSpinner CantidadAccesorios;
+    private javax.swing.JSpinner CantidadCelulares;
+    private javax.swing.JSpinner CantidadComponentes;
+    private javax.swing.JSpinner CantidadLaptop;
+    private javax.swing.JSpinner CantidadPc;
+    private javax.swing.JSpinner CantidadPerifericos;
+    private javax.swing.JSpinner CantidadRedes;
     private javax.swing.JComboBox<String> Celulares;
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JComboBox<String> Componentes;
@@ -707,13 +734,14 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Pc;
     private javax.swing.JComboBox<String> Perifericos;
     private javax.swing.JComboBox<String> Redes;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton VerCarrito;
+    private javax.swing.JButton añadir1;
+    private javax.swing.JButton añadir2;
+    private javax.swing.JButton añadir3;
+    private javax.swing.JButton añadir4;
+    private javax.swing.JButton añadir7;
+    private javax.swing.JButton añadir8;
+    private javax.swing.JButton añadir9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -737,13 +765,6 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
