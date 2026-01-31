@@ -19,12 +19,15 @@ public class FrmProductos extends javax.swing.JFrame {
     /**
      * Creates new form FrmProductos
      */
-    public FrmProductos() {
+    private static String usuario;
+    public FrmProductos(String usuario) {
         initComponents();
         this.setTitle("Productos");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         ControladorProducto.CargarLaptops(this);
+        this.usuario = usuario;
+        identificador.setText("Bienvenido: " + usuario);
     }
     
     public void agregarItem(List<producto> item){
@@ -120,6 +123,7 @@ public class FrmProductos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         VerCarrito = new javax.swing.JButton();
+        identificador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -310,7 +314,7 @@ public class FrmProductos extends javax.swing.JFrame {
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel33))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(CampoComponentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(CantidadComponentes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Componentes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(57, 57, 57)
@@ -593,6 +597,8 @@ public class FrmProductos extends javax.swing.JFrame {
             }
         });
 
+        identificador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -606,7 +612,9 @@ public class FrmProductos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(VerCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(CerrarSesion)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(identificador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -618,18 +626,20 @@ public class FrmProductos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(VerCarrito))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(CerrarSesion))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jLabel9)))))
+                                .addComponent(jLabel9))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(CerrarSesion))
+                            .addComponent(VerCarrito))))
                 .addGap(18, 18, 18)
                 .addComponent(Ilustracion)
                 .addGap(18, 18, 18)
@@ -707,7 +717,7 @@ public class FrmProductos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmProductos().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmProductos(usuario).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -742,6 +752,7 @@ public class FrmProductos extends javax.swing.JFrame {
     private javax.swing.JButton añadir7;
     private javax.swing.JButton añadir8;
     private javax.swing.JButton añadir9;
+    private javax.swing.JLabel identificador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
