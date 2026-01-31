@@ -184,7 +184,7 @@ public class FrmLogin extends javax.swing.JFrame {
             case "admin":
                 break;
             case "user":
-                FrmProductos prod = new FrmProductos();
+                FrmProductos prod = new FrmProductos(usuario);
                 prod.setVisible(true);
                 dispose();
                 break;
