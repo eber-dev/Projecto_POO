@@ -66,8 +66,8 @@ public class FrmProductos extends javax.swing.JFrame {
     }
     
     public void limitarspiner(JSpinner[] j){
-        SpinnerNumberModel modelo = new SpinnerNumberModel(1, 1, 10, 1);
         for(int i=0; i<j.length;i++){
+            SpinnerNumberModel modelo = new SpinnerNumberModel(1, 1, 10, 1);
             j[i].setModel(modelo);
         }
         
@@ -680,31 +680,38 @@ public class FrmProductos extends javax.swing.JFrame {
     private void añadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir1ActionPerformed
         // TODO add your handling code here:
         String laptop = Laptop.getSelectedItem().toString();
+        int cantidadlaptop = (Integer) CantidadLaptop.getValue();
+
     }//GEN-LAST:event_añadir1ActionPerformed
 
     private void añadir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir2ActionPerformed
         // TODO add your handling code here:
         String computadora = Pc.getSelectedItem().toString();
+        int cantidadcomputadora = (Integer) CantidadPc.getValue();
     }//GEN-LAST:event_añadir2ActionPerformed
 
     private void añadir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir3ActionPerformed
         // TODO add your handling code here:
         String componentes = Componentes.getSelectedItem().toString();
+        int cantidadcomponentes = (Integer) CantidadComponentes.getValue();
     }//GEN-LAST:event_añadir3ActionPerformed
 
     private void añadir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir7ActionPerformed
         // TODO add your handling code here:
         String celulares = Celulares.getSelectedItem().toString();
+        int cantidadcalulares = (Integer) CantidadCelulares.getValue();
     }//GEN-LAST:event_añadir7ActionPerformed
 
     private void añadir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir8ActionPerformed
         // TODO add your handling code here:
         String accesorio = Accesorios.getSelectedItem().toString();
+        int cantidadaccesorio = (Integer) CantidadAccesorios.getValue();
     }//GEN-LAST:event_añadir8ActionPerformed
 
     private void añadir9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir9ActionPerformed
         // TODO add your handling code here:
         String red = Redes.getSelectedItem().toString();
+        int cantidadred = (Integer) CantidadRedes.getValue();
     }//GEN-LAST:event_añadir9ActionPerformed
 
     private void LaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaptopActionPerformed
