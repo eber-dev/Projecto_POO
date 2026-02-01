@@ -23,7 +23,8 @@ public class FrmProductos extends javax.swing.JFrame {
      * Creates new form FrmProductos
      */
     private static String usuario;
-    List<producto> producto = new ArrayList<>();
+    List<producto> compras = new ArrayList<>();
+    producto adquirido;
     public FrmProductos(String usuario) {
         initComponents();
         this.setTitle("Productos");
@@ -681,6 +682,8 @@ public class FrmProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
         String laptop = Laptop.getSelectedItem().toString();
         int cantidadlaptop = (Integer) CantidadLaptop.getValue();
+        adquirido = new producto(laptop,cantidadlaptop);
+        compras.add(adquirido);
 
     }//GEN-LAST:event_añadir1ActionPerformed
 
@@ -688,30 +691,40 @@ public class FrmProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
         String computadora = Pc.getSelectedItem().toString();
         int cantidadcomputadora = (Integer) CantidadPc.getValue();
+        adquirido = new producto(computadora,cantidadcomputadora);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir2ActionPerformed
 
     private void añadir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir3ActionPerformed
         // TODO add your handling code here:
         String componentes = Componentes.getSelectedItem().toString();
         int cantidadcomponentes = (Integer) CantidadComponentes.getValue();
+        adquirido = new producto(componentes,cantidadcomponentes);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir3ActionPerformed
 
     private void añadir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir7ActionPerformed
         // TODO add your handling code here:
         String celulares = Celulares.getSelectedItem().toString();
-        int cantidadcalulares = (Integer) CantidadCelulares.getValue();
+        int cantidadcelulares = (Integer) CantidadCelulares.getValue();
+        adquirido = new producto(celulares,cantidadcelulares);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir7ActionPerformed
 
     private void añadir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir8ActionPerformed
         // TODO add your handling code here:
         String accesorio = Accesorios.getSelectedItem().toString();
         int cantidadaccesorio = (Integer) CantidadAccesorios.getValue();
+        adquirido = new producto(accesorio,cantidadaccesorio);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir8ActionPerformed
 
     private void añadir9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir9ActionPerformed
         // TODO add your handling code here:
         String red = Redes.getSelectedItem().toString();
         int cantidadred = (Integer) CantidadRedes.getValue();
+        adquirido = new producto(red,cantidadred);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir9ActionPerformed
 
     private void LaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaptopActionPerformed
@@ -721,6 +734,9 @@ public class FrmProductos extends javax.swing.JFrame {
     private void añadir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir4ActionPerformed
         // TODO add your handling code here:
         String perifericos = Perifericos.getSelectedItem().toString();
+        int cantidadperifericos = (Integer) CantidadPerifericos.getValue();
+        adquirido = new producto(perifericos,cantidadperifericos);
+        compras.add(adquirido);
     }//GEN-LAST:event_añadir4ActionPerformed
 
     private void VerCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCarritoActionPerformed
