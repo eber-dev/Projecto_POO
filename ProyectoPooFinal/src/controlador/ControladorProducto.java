@@ -4,6 +4,7 @@
  */
 package controlador;
 import java.util.List;
+import javax.swing.JSpinner;
 import modelo.producto;
 import modelo.productoDAO;
 import vista.FrmProductos;
@@ -18,6 +19,10 @@ public class ControladorProducto {
         List<producto> lap = laptop.listar();  
         prod.agregarItem(lap);
         prod.setVisible(true);
+    }
+    
+    public static void limitarcantidad(FrmProductos prod,JSpinner[] a){
+        prod.limitarspiner(a);
     }
 
     
