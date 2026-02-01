@@ -4,7 +4,10 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.producto;
 
 /**
  *
@@ -17,10 +20,21 @@ public class FrmCarrito extends javax.swing.JFrame {
     /**
      * Creates new form FrmCarrito
      */
-    public FrmCarrito() {
+    private static List<producto> lista = new ArrayList<>();
+    public FrmCarrito(List<producto> lista) {
         initComponents();
         this.setResizable(true);
         this.setLocationRelativeTo(null);
+        this.lista = lista;
+        actualizartabla();
+        
+    }
+    
+    public void actualizartabla(){
+        for(producto p: lista){
+            System.out.println(p.getNombre()+" - "+p.getStock());
+        }
+        
     }
 
     /**
@@ -164,7 +178,7 @@ public class FrmCarrito extends javax.swing.JFrame {
 
     private void RetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetrocederActionPerformed
         // TODO add your handling code here:
-        FrmProductos prod = new FrmProductos();
+        FrmProductos prod = new FrmProductos(null);
         prod.setVisible(true);
         dispose();
     }//GEN-LAST:event_RetrocederActionPerformed
@@ -196,7 +210,7 @@ public class FrmCarrito extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmCarrito().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmCarrito(lista).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
