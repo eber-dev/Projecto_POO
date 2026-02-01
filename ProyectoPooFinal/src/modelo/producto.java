@@ -29,6 +29,11 @@ public class producto {
         this.stock = stock;
         this.id_categoria = id_categoria;
     }
+    
+    public producto(String nombre,int stock){
+        this.nombre = nombre;
+        this.stock = stock;
+    }
 
     public int getId() {
         return id;
