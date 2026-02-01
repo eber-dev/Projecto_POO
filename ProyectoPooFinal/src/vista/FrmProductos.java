@@ -741,7 +741,7 @@ public class FrmProductos extends javax.swing.JFrame {
 
     private void VerCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCarritoActionPerformed
         // TODO add your handling code here:
-        FrmCarrito carro = new FrmCarrito();
+        FrmCarrito carro = new FrmCarrito(compras);
         carro.setVisible(true);
         dispose();
     }//GEN-LAST:event_VerCarritoActionPerformed
