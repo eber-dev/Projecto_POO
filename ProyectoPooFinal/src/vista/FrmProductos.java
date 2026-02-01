@@ -23,7 +23,7 @@ public class FrmProductos extends javax.swing.JFrame {
      * Creates new form FrmProductos
      */
     private static String usuario;
-    List<producto> compras = new ArrayList<>();
+    public static List<producto> compras = new ArrayList<>();
     producto adquirido;
     public FrmProductos(String usuario) {
         initComponents();
