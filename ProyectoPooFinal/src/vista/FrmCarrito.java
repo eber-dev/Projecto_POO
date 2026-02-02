@@ -4,10 +4,12 @@
  */
 package vista;
 
+import controlador.ControladorProducto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.producto;
+import modelo.productoDAO;
 
 /**
  *
@@ -31,8 +33,15 @@ public class FrmCarrito extends javax.swing.JFrame {
     }
     
     public void actualizartabla(){
-        for(producto p: lista){
-            System.out.println(p.getNombre()+" - "+p.getStock());
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
+        
+        for(producto p: lista){           
+            for(producto c: cat){
+                if(c.getNombre().equals(p.getNombre())){
+                    System.out.println(String.format( "Producto: %s | Categoria: %s | Precio Unitario: %.2f | Cantidad Pedida: %d",p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock()));
+                }
+            }
         }
         
     }
