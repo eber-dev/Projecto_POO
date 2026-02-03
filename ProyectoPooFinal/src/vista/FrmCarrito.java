@@ -47,7 +47,7 @@ public class FrmCarrito extends javax.swing.JFrame {
             for(producto c: cat){
                 if(c.getNombre().equals(p.getNombre())){
                     //System.out.println(String.format( "Producto: %s | Categoria: %s | Precio Unitario: %.2f | Cantidad Pedida: %d",p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock()));
-                    modelo.addRow(new Object[]{p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock(),"null"});
+                    modelo.addRow(new Object[]{p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock(),c.getPrecio()*p.getStock()});
                 }
             }
         }
