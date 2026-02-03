@@ -26,6 +26,7 @@ public class FrmCarrito extends javax.swing.JFrame {
      */
     private static List<producto> lista = new ArrayList<>();
     DefaultTableModel modelo;
+    private int contador = 0;
     public FrmCarrito(List<producto> lista) {
         initComponents();
         this.setResizable(true);
@@ -46,10 +47,13 @@ public class FrmCarrito extends javax.swing.JFrame {
         for(producto p: lista){           
             for(producto c: cat){
                 if(c.getNombre().equals(p.getNombre())){
-                    //System.out.println(String.format( "Producto: %s | Categoria: %s | Precio Unitario: %.2f | Cantidad Pedida: %d",p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock()));
                     modelo.addRow(new Object[]{p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock(),c.getPrecio()*p.getStock()});
+                    contador+=(c.getPrecio()*p.getStock());
                 }
             }
+            Subtotal.setText(String.valueOf(contador));
+            Igv.setText(String.valueOf(contador*0.18));
+            Total.setText(String.valueOf(contador+contador*0.18));
         }
         
     }
@@ -75,6 +79,9 @@ public class FrmCarrito extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Subtotal = new javax.swing.JLabel();
+        Igv = new javax.swing.JLabel();
+        Total = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,6 +140,12 @@ public class FrmCarrito extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel4.setText("Total:");
 
+        Subtotal.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        Igv.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        Total.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,26 +162,32 @@ public class FrmCarrito extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(Comprar)
-                        .addGap(111, 111, 111)
-                        .addComponent(Borrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Retroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(Comprar)
+                                .addGap(111, 111, 111)
+                                .addComponent(Borrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(41, 41, 41)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Retroceder, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(Subtotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Igv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(11, 11, 11)))
                 .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGap(279, 279, 279)
                 .addComponent(jLabel10)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
-                .addGap(186, 186, 186))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,11 +206,17 @@ public class FrmCarrito extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Subtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Igv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(Total, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Comprar)
@@ -251,8 +276,11 @@ public class FrmCarrito extends javax.swing.JFrame {
     private javax.swing.JButton Borrar;
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JButton Comprar;
+    private javax.swing.JLabel Igv;
     private javax.swing.JButton Retroceder;
+    private javax.swing.JLabel Subtotal;
     private javax.swing.JTable TablaCarro;
+    private javax.swing.JLabel Total;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
