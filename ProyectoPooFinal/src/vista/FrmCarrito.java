@@ -5,9 +5,11 @@
 package vista;
 
 import controlador.ControladorProducto;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.producto;
 import modelo.productoDAO;
 
@@ -23,11 +25,16 @@ public class FrmCarrito extends javax.swing.JFrame {
      * Creates new form FrmCarrito
      */
     private static List<producto> lista = new ArrayList<>();
+    DefaultTableModel modelo;
     public FrmCarrito(List<producto> lista) {
         initComponents();
         this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.lista = lista;
+        modelo = (DefaultTableModel)TablaCarro.getModel();
+        TablaCarro.getTableHeader().setReorderingAllowed(false);
+        TablaCarro.getTableHeader().setResizingAllowed(false);
+        TablaCarro.getTableHeader().setFont(new Font("Arial",Font.PLAIN,16));
         actualizartabla();
         
     }
@@ -39,7 +46,8 @@ public class FrmCarrito extends javax.swing.JFrame {
         for(producto p: lista){           
             for(producto c: cat){
                 if(c.getNombre().equals(p.getNombre())){
-                    System.out.println(String.format( "Producto: %s | Categoria: %s | Precio Unitario: %.2f | Cantidad Pedida: %d",p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock()));
+                    //System.out.println(String.format( "Producto: %s | Categoria: %s | Precio Unitario: %.2f | Cantidad Pedida: %d",p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock()));
+                    modelo.addRow(new Object[]{p.getNombre(),c.getId_categoria(),c.getPrecio(),p.getStock(),"null"});
                 }
             }
         }
@@ -60,7 +68,7 @@ public class FrmCarrito extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaCarro = new javax.swing.JTable();
         Comprar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
         Retroceder = new javax.swing.JButton();
@@ -86,16 +94,16 @@ public class FrmCarrito extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/carritolista (1).png"))); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaCarro.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        TablaCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Producto", "Categoria", "Cantidad", "Precio"
+                "Producto", "Categoria", "Precio Unitario", "Cantidad", "Importe"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaCarro);
 
         Comprar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         Comprar.setText("Confirmar Compra");
@@ -244,6 +252,7 @@ public class FrmCarrito extends javax.swing.JFrame {
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JButton Comprar;
     private javax.swing.JButton Retroceder;
+    private javax.swing.JTable TablaCarro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -251,6 +260,5 @@ public class FrmCarrito extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
