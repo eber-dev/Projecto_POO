@@ -5,11 +5,8 @@
 package controlador;
 
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
-import vista.FrmLogin;
-
 /**
  *
  * @author EBER
@@ -17,30 +14,24 @@ import vista.FrmLogin;
 public class ControladorLogin {
     public String validar(String usuario, String clave){
         UsuarioDAO u = new UsuarioDAO();
-        FrmLogin log = new FrmLogin();
         List<Usuario>credenciales = u.listar();
+        
+        if(usuario == null || clave == null || usuario.trim().isEmpty() || usuario.trim().isEmpty()){
+            return "vacio";
+        }
+        
         for(Usuario val: credenciales){
-            switch(val.getRol()){
-                case "ADMIN":
-                    if(val.getUsuario().equals(usuario)&&val.getPassword().equals(clave)){
-                        System.out.println("Usted es un administrador");
-                        return "admin";
-                    }else{
-                        JOptionPane.showMessageDialog(log, "Usuario y/o contraseña incorrectos, Ingrese nuevamente");
-                        return "error";
-                    }
-                case "USER":
-                    if(val.getUsuario().equals(usuario) && val.getPassword().equals(clave)){
-                        System.out.println("Usted es un usuario");
-                        return "user";
-                    }else{
-                        JOptionPane.showMessageDialog(log, "Usuario y/o contraseña incorrectos, Ingrese nuevamente");
-                        return "error";
-                    }
+            if(val.getUsuario().equals(usuario) && val.getPassword().equals(clave)){
+                if(val.getRol().equals("ADMIN")){
+                    return "admin";
+                }
+                
+                if(val.getRol().equals("USER")){
+                    return "user";
+                }
             }
         }
         
-        return null;
-        
+        return "error";    
     }        
 }
