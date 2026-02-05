@@ -188,6 +188,9 @@ public class FrmLogin extends javax.swing.JFrame {
                 prod.setVisible(true);
                 dispose();
                 break;
+            case "error":
+                CampoUsuario.setText("");
+                CampoContraseña.setText("");
         }
         
     }//GEN-LAST:event_IngresarActionPerformed
