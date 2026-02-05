@@ -25,19 +25,19 @@ import modelo.Usuario;
 public class test {
     public static void main(String[] args) throws SQLException {
         UsuarioDAO d = new UsuarioDAO();
-        /*List<Usuario> val = d.listar();
+        List<Usuario> val = d.listar();
         
         for(Usuario p: val){
             System.out.println(p.getNombre());
-        }*/
+        }
         
         /*Usuario u = new Usuario("Juan","Perez","juanperez","1234","USER");*/
         
-        if(d.eliminar(3)){
+        /*if(d.eliminar(3)){
             System.out.println("Nice");
         }else{
             System.out.println("no");
-        }
+        }*/
         
         
         
