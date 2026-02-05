@@ -188,7 +188,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 prod.setVisible(true);
                 dispose();
                 break;
+            case "vacio":
+                JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios");
+                break;
             case "error":
+                JOptionPane.showMessageDialog(this, "Usuario y/o contraseña incorrectos");
                 CampoUsuario.setText("");
                 CampoContraseña.setText("");
         }
