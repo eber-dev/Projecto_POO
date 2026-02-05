@@ -5,8 +5,10 @@
 package controlador;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
+import vista.FrmLogin;
 
 /**
  *
@@ -15,6 +17,7 @@ import modelo.UsuarioDAO;
 public class ControladorLogin {
     public String validar(String usuario, String clave){
         UsuarioDAO u = new UsuarioDAO();
+        FrmLogin log = new FrmLogin();
         List<Usuario>credenciales = u.listar();
         for(Usuario val: credenciales){
             switch(val.getRol()){
@@ -22,14 +25,18 @@ public class ControladorLogin {
                     if(val.getUsuario().equals(usuario)&&val.getPassword().equals(clave)){
                         System.out.println("Usted es un administrador");
                         return "admin";
+                    }else{
+                        JOptionPane.showMessageDialog(log, "Usuario y/o contraseña incorrectos, Ingrese nuevamente");
+                        return "error";
                     }
-                    break;
                 case "USER":
                     if(val.getUsuario().equals(usuario) && val.getPassword().equals(clave)){
                         System.out.println("Usted es un usuario");
                         return "user";
+                    }else{
+                        JOptionPane.showMessageDialog(log, "Usuario y/o contraseña incorrectos, Ingrese nuevamente");
+                        return "error";
                     }
-                    break;
             }
         }
         
