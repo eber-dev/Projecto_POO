@@ -26,7 +26,7 @@ public class FrmCarrito extends javax.swing.JFrame {
      */
     private static List<producto> lista = new ArrayList<>();
     DefaultTableModel modelo;
-    private int contador = 0;
+    private double contador = 0;
     public FrmCarrito(List<producto> lista) {
         initComponents();
         this.setResizable(true);
@@ -51,9 +51,9 @@ public class FrmCarrito extends javax.swing.JFrame {
                     contador+=(c.getPrecio()*p.getStock());
                 }
             }
-            Subtotal.setText(String.valueOf(contador));
-            Igv.setText(String.valueOf(contador*0.18));
-            Total.setText(String.valueOf(contador+contador*0.18));
+            Subtotal.setText(String.format("%.2f", contador));
+            Igv.setText(String.format("%.2f", contador*0.18));
+            Total.setText(String.format("%.2f", contador+contador*0.18));
         }
         
     }
@@ -122,6 +122,11 @@ public class FrmCarrito extends javax.swing.JFrame {
 
         Borrar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         Borrar.setText("Eliminar");
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
 
         Retroceder.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         Retroceder.setText("Atras");
@@ -246,6 +251,16 @@ public class FrmCarrito extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Compra completada");
     }//GEN-LAST:event_ComprarActionPerformed
+
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+        // TODO add your handling code here:
+        lista.clear();
+        modelo.setRowCount(0);
+        Subtotal.setText("0.00");
+        Igv.setText("0.00");
+        Total.setText("0.00");
+        
+    }//GEN-LAST:event_BorrarActionPerformed
 
     /**
      * @param args the command line arguments
