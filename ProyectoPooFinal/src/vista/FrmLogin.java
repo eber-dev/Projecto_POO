@@ -182,6 +182,9 @@ public class FrmLogin extends javax.swing.JFrame {
         String val = cl.validar(usuario, contraseña);
         switch(val){
             case "admin":
+                FrmGestion gest = new FrmGestion();
+                gest.setVisible(true);
+                dispose();
                 break;
             case "user":
                 FrmProductos prod = new FrmProductos(usuario);
