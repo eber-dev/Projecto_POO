@@ -4,6 +4,17 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Movimiento;
+import java.awt.Font;
+import modelo.MovimientosDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
+import modelo.producto;
+import modelo.productoDAO;
+
 /**
  *
  * @author EBER
@@ -15,10 +26,71 @@ public class FrmGestion extends javax.swing.JFrame {
     /**
      * Creates new form FrmGestion
      */
+    private static List<Movimiento>lista1 = new ArrayList<>();
+    private static List<producto>lista2 = new ArrayList<>();
+    private static List<Usuario>lista3 = new ArrayList<>();
+    DefaultTableModel modelo1,modelo2,modelo3,modelo4;
+    
     public FrmGestion() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        modelo1 = (DefaultTableModel)TablaIngresos.getModel();
+        modelo2 = (DefaultTableModel)TablaSalidas.getModel();
+        modelo3 = (DefaultTableModel)TablaLista.getModel();
+        modelo4 = (DefaultTableModel) TablaUsuarios.getModel();
+        TablaIngresos.getTableHeader().setReorderingAllowed(false);
+        TablaIngresos.getTableHeader().setResizingAllowed(false);
+        TablaIngresos.getTableHeader().setFont(new Font("Arial",Font.PLAIN,16));
+        TablaSalidas.getTableHeader().setReorderingAllowed(false);
+        TablaSalidas.getTableHeader().setResizingAllowed(false);
+        TablaSalidas.getTableHeader().setFont(new Font("Arial",Font.PLAIN,16));
+        TablaLista.getTableHeader().setReorderingAllowed(false);
+        TablaLista.getTableHeader().setResizingAllowed(false);
+        TablaLista.getTableHeader().setFont(new Font("Arial",Font.PLAIN,16));
+        TablaUsuarios.getTableHeader().setReorderingAllowed(false);
+        TablaUsuarios.getTableHeader().setResizingAllowed(false);
+        TablaUsuarios.getTableHeader().setFont(new Font("Arial",Font.PLAIN,16));
+        IngresosSalidas();
+        lista();
+        usuarios();
+    }
+    
+    public void IngresosSalidas(){
+        MovimientosDAO mov = new MovimientosDAO();
+        lista1= mov.listar();
+        modelo1.setRowCount(0);
+        modelo2.setRowCount(0);
+        
+        for(Movimiento p: lista1){
+            if(p.getTipo().equals("ENTRADA")){
+                modelo1.addRow(new Object[]{p.getId_movimiento(),p.getId_producto(),p.getTipo(),p.getCantidad(),p.getFecha()});
+            }
+            if(p.getTipo().equals("SALIDA")){
+                modelo2.addRow(new Object[]{p.getId_movimiento(),p.getId_producto(),p.getTipo(),p.getCantidad(),p.getFecha()});
+            }
+        }
+    }
+    
+    public void lista(){
+        productoDAO prod = new productoDAO();
+        lista2 = prod.listar();
+        modelo3.setRowCount(0);
+        
+        for(producto p: lista2){
+            modelo3.addRow(new Object[]{p.getId(),p.getNombre(),p.getPrecio(),p.getStock(),p.getId_categoria()});
+        }
+        
+        
+    }
+    
+    public void usuarios(){
+        UsuarioDAO u = new UsuarioDAO();
+        lista3 = u.listar();
+        
+        for(Usuario p: lista3){
+            modelo4.addRow(new Object[]{p.getId_usuario(),p.getNombre(),p.getApellido(),p.getUsuario(),p.getPassword(),p.getRol()});
+        }
     }
 
     /**
@@ -38,10 +110,10 @@ public class FrmGestion extends javax.swing.JFrame {
         MovimientoVentas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaIngresos = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        TablaSalidas = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
@@ -52,7 +124,7 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        TablaLista = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -75,7 +147,7 @@ public class FrmGestion extends javax.swing.JFrame {
         GestionUsuarios = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TablaUsuarios = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
@@ -113,34 +185,30 @@ public class FrmGestion extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/ventas (1).png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaIngresos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TablaIngresos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID_mov", "ID_prod", "Tipo", "Cantidad", "Fecha"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaIngresos);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel6.setText("Ver Movimientos:");
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        TablaSalidas.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TablaSalidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID_mov", "ID_prod", "Tipo", "Cantidad", "Fecha"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(TablaSalidas);
 
         jLabel26.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel26.setText("Exportar a Excel:");
@@ -222,18 +290,16 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel7.setText("Lista de Productos:");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        TablaLista.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        TablaLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Precio", "Stock", "Categoria"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(TablaLista);
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel8.setText("Añadir Stock:");
@@ -405,18 +471,16 @@ public class FrmGestion extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/registrados (1).png"))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TablaUsuarios.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        TablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Apellido", "Usuario", "Contraseña", "Rol"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(TablaUsuarios);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel5.setText("Usuarios Registrados");
@@ -642,6 +706,10 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JPanel MovimientoVentas;
     private javax.swing.JTabbedPane Multipanel;
     private javax.swing.JPanel StockProductos;
+    private javax.swing.JTable TablaIngresos;
+    private javax.swing.JTable TablaLista;
+    private javax.swing.JTable TablaSalidas;
+    private javax.swing.JTable TablaUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -687,10 +755,6 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
