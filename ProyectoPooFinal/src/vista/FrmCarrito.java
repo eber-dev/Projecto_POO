@@ -43,6 +43,7 @@ public class FrmCarrito extends javax.swing.JFrame {
     public void actualizartabla(){
         productoDAO prod = new productoDAO();
         List<producto> cat = prod.listar();
+        modelo.setRowCount(0);
         
         for(producto p: lista){           
             for(producto c: cat){
