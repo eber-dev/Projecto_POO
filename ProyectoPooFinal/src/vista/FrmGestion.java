@@ -4,11 +4,13 @@
  */
 package vista;
 
+import controlador.ExportarExcel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Movimiento;
 import java.awt.Font;
+import java.io.IOException;
 import modelo.MovimientosDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
@@ -129,10 +131,10 @@ public class FrmGestion extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaSalidas = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Eleccion = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        Exportar = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         StockProductos = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -227,8 +229,8 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel26.setText("Exportar a Excel:");
 
-        jComboBox2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Ingresos", "Salidas" }));
+        Eleccion.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        Eleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Ingresos", "Salidas" }));
 
         jLabel25.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel25.setText("Ingresos:");
@@ -236,8 +238,13 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel27.setText("Salidas:");
 
-        jButton8.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton8.setText("Exportar");
+        Exportar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        Exportar.setText("Exportar");
+        Exportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportarActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel28.setText("Ganancia total");
@@ -257,8 +264,8 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addComponent(jLabel28)
                             .addGroup(MovimientoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton8)))))
+                                .addComponent(Eleccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Exportar)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(MovimientoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
@@ -291,9 +298,9 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel26)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton8)
+                        .addComponent(Exportar)
                         .addGap(34, 34, 34))))
         );
 
@@ -685,6 +692,25 @@ public class FrmGestion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
+    private void ExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportarActionPerformed
+        // TODO add your handling code here:
+        ExportarExcel obj;
+        try{
+            obj= new ExportarExcel();
+            String opcion = Eleccion.getSelectedItem().toString();
+            switch(opcion){
+                case "Ingresos":
+                    obj.exportarExcel(TablaIngresos);
+                    break;
+                case "Salidas":
+                    obj.exportarExcel(TablaSalidas);
+                    break;
+            }
+        }catch(IOException e){
+            System.out.println("Error: "+ e);
+        }
+    }//GEN-LAST:event_ExportarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -715,6 +741,8 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JSpinner CategoriaAñadir;
     private javax.swing.JSpinner CategoriaNuevo;
     private javax.swing.JButton CerrarSesion;
+    private javax.swing.JComboBox<String> Eleccion;
+    private javax.swing.JButton Exportar;
     private javax.swing.JPanel GestionUsuarios;
     private javax.swing.JPanel MovimientoVentas;
     private javax.swing.JTabbedPane Multipanel;
@@ -730,9 +758,7 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
