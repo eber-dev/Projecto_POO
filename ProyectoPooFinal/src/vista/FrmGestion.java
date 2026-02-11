@@ -14,6 +14,8 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import modelo.producto;
 import modelo.productoDAO;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -54,6 +56,7 @@ public class FrmGestion extends javax.swing.JFrame {
         IngresosSalidas();
         lista();
         usuarios();
+        limitarspiner();
     }
     
     public void IngresosSalidas(){
@@ -91,6 +94,17 @@ public class FrmGestion extends javax.swing.JFrame {
         for(Usuario p: lista3){
             modelo4.addRow(new Object[]{p.getId_usuario(),p.getNombre(),p.getApellido(),p.getUsuario(),p.getPassword(),p.getRol()});
         }
+    }
+    
+    
+    
+    public void limitarspiner(){
+        SpinnerNumberModel spin = new SpinnerNumberModel(1,1,10,1);
+        SpinnerNumberModel spin2 = new SpinnerNumberModel(1,1,7,1);
+        SpinnerNumberModel spin3 = new SpinnerNumberModel(1,1,7,1);
+        CategoriaAñadir.setModel(spin2);
+        CantidadAñadir.setModel(spin);
+        CategoriaNuevo.setModel(spin3);
     }
 
     /**
@@ -134,14 +148,14 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        CategoriaAñadir = new javax.swing.JSpinner();
         jTextField1 = new javax.swing.JTextField();
-        jSpinner2 = new javax.swing.JSpinner();
+        CantidadAñadir = new javax.swing.JSpinner();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jSpinner3 = new javax.swing.JSpinner();
+        CategoriaNuevo = new javax.swing.JSpinner();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         GestionUsuarios = new javax.swing.JPanel();
@@ -329,31 +343,27 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel17.setText("Stock:");
 
-        jSpinner1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CategoriaAñadir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jSpinner2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CantidadAñadir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField2.setText("jTextField2");
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField3.setText("jTextField3");
 
         jTextField4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField4.setText("jTextField4");
 
         jLabel18.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel18.setText("Categoria:");
 
-        jSpinner3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        CategoriaNuevo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jButton2.setText("Añadir");
@@ -379,8 +389,8 @@ public class FrmGestion extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                    .addComponent(jSpinner2))))
+                                    .addComponent(CategoriaAñadir, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                    .addComponent(CantidadAñadir))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -400,7 +410,7 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addGroup(StockProductosLayout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(CategoriaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StockProductosLayout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addGap(61, 61, 61)))
@@ -444,7 +454,7 @@ public class FrmGestion extends javax.swing.JFrame {
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel15)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CategoriaAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -457,9 +467,9 @@ public class FrmGestion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CantidadAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CategoriaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -701,6 +711,9 @@ public class FrmGestion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner CantidadAñadir;
+    private javax.swing.JSpinner CategoriaAñadir;
+    private javax.swing.JSpinner CategoriaNuevo;
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JPanel GestionUsuarios;
     private javax.swing.JPanel MovimientoVentas;
@@ -752,9 +765,6 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
