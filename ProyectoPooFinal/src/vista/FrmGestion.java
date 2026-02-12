@@ -36,6 +36,7 @@ public class FrmGestion extends javax.swing.JFrame {
     private static List<Usuario>lista3 = new ArrayList<>();
     DefaultTableModel modelo1,modelo2,modelo3,modelo4;
     producto producto;
+    Usuario user;
     
     public FrmGestion() {
         initComponents();
@@ -94,7 +95,7 @@ public class FrmGestion extends javax.swing.JFrame {
     public void usuarios(){
         UsuarioDAO u = new UsuarioDAO();
         lista3 = u.listar();
-        
+        modelo4.setRowCount(0);
         for(Usuario p: lista3){
             modelo4.addRow(new Object[]{p.getId_usuario(),p.getNombre(),p.getApellido(),p.getUsuario(),p.getPassword(),p.getRol()});
         }
@@ -179,13 +180,13 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         CampoUsuario = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        EliminarUsuario = new javax.swing.JButton();
+        TipoRol = new javax.swing.JComboBox<>();
         jLabel23 = new javax.swing.JLabel();
         CampoContraseña = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        CambiarPrivilegios = new javax.swing.JButton();
+        ActualizarContraseña = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel14.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -555,13 +556,14 @@ public class FrmGestion extends javax.swing.JFrame {
                     .addComponent(jLabel31)
                     .addComponent(ActualizarStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(CategoriaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel30)
-                    .addComponent(ActualizarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33)
-                    .addComponent(RecibirID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel18)
+                        .addComponent(CategoriaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ActualizarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel33)
+                        .addComponent(RecibirID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgregarProducto)
@@ -590,6 +592,11 @@ public class FrmGestion extends javax.swing.JFrame {
         actualizar2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         actualizar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/productos.png"))); // NOI18N
         actualizar2.setText("Actualizar");
+        actualizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar2ActionPerformed(evt);
+            }
+        });
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel21.setText("Ingrese el ID del usuario:");
@@ -607,14 +614,19 @@ public class FrmGestion extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton4.setText("Eliminar Usuario");
-
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "USER", "ADMIN" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        EliminarUsuario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        EliminarUsuario.setText("Eliminar Usuario");
+        EliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                EliminarUsuarioActionPerformed(evt);
+            }
+        });
+
+        TipoRol.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        TipoRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "USER", "ADMIN" }));
+        TipoRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TipoRolActionPerformed(evt);
             }
         });
 
@@ -631,11 +643,21 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel24.setText("Seleccione el tipo de usuario:");
 
-        jButton6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton6.setText("Cambiar privilegios");
+        CambiarPrivilegios.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        CambiarPrivilegios.setText("Cambiar privilegios");
+        CambiarPrivilegios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CambiarPrivilegiosActionPerformed(evt);
+            }
+        });
 
-        jButton7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton7.setText("Actualizar Contraseña");
+        ActualizarContraseña.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        ActualizarContraseña.setText("Actualizar Contraseña");
+        ActualizarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarContraseñaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout GestionUsuariosLayout = new javax.swing.GroupLayout(GestionUsuarios);
         GestionUsuarios.setLayout(GestionUsuariosLayout);
@@ -652,8 +674,8 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addComponent(actualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19)
                             .addComponent(jLabel24)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6))))
+                            .addComponent(TipoRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CambiarPrivilegios))))
                 .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(GestionUsuariosLayout.createSequentialGroup()
                         .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -669,7 +691,7 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GestionUsuariosLayout.createSequentialGroup()
-                                    .addComponent(jButton4)
+                                    .addComponent(EliminarUsuario)
                                     .addGap(101, 101, 101))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GestionUsuariosLayout.createSequentialGroup()
                                     .addComponent(jLabel20)
@@ -677,7 +699,7 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(CampoContraseña, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton7)))))
+                            .addComponent(ActualizarContraseña)))))
         );
         GestionUsuariosLayout.setVerticalGroup(
             GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,7 +718,7 @@ public class FrmGestion extends javax.swing.JFrame {
                 .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(EliminarUsuario))
                 .addGap(18, 18, 18)
                 .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -708,11 +730,11 @@ public class FrmGestion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TipoRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6))
+                    .addComponent(ActualizarContraseña)
+                    .addComponent(CambiarPrivilegios))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -765,9 +787,9 @@ public class FrmGestion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoUsuarioActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void TipoRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipoRolActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_TipoRolActionPerformed
 
     private void CampoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContraseñaActionPerformed
         // TODO add your handling code here:
@@ -846,6 +868,50 @@ public class FrmGestion extends javax.swing.JFrame {
         lista();
     }//GEN-LAST:event_actualizar1ActionPerformed
 
+    private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
+        // TODO add your handling code here:
+        UsuarioDAO u = new UsuarioDAO();
+        int id_usuario = Integer.parseInt(CampoUsuario.getText());
+        if(u.eliminar(id_usuario)){
+            JOptionPane.showMessageDialog(this, "Credenciales eliminadas correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "Hubo un error al eliminar las credenciales");
+        }
+    }//GEN-LAST:event_EliminarUsuarioActionPerformed
+
+    private void CambiarPrivilegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarPrivilegiosActionPerformed
+        // TODO add your handling code here:
+        UsuarioDAO u = new UsuarioDAO();
+        int id_usuario = Integer.parseInt(CampoUsuario.getText());
+        String privilegio = TipoRol.getSelectedItem().toString();
+        
+        user = new Usuario(id_usuario,privilegio);
+        if(u.actualizarprivilegios(user)){
+            JOptionPane.showMessageDialog(this, "Se modificaron los privilegios del usuario con ID" + id_usuario);
+        }else{
+            JOptionPane.showMessageDialog(this, "No se pudieron modificar los privilegios");
+        }
+        
+    }//GEN-LAST:event_CambiarPrivilegiosActionPerformed
+
+    private void ActualizarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarContraseñaActionPerformed
+        // TODO add your handling code here:
+        UsuarioDAO u = new UsuarioDAO();
+        String clave = CampoContraseña.getText();
+        int id_usuario = Integer.parseInt(CampoUsuario.getText());
+        user = new Usuario(clave,id_usuario);
+        if(u.actualizarpassword(user)){
+            JOptionPane.showMessageDialog(this, "La contraseña se actualizo correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña");
+        }
+    }//GEN-LAST:event_ActualizarContraseñaActionPerformed
+
+    private void actualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar2ActionPerformed
+        // TODO add your handling code here:
+        usuarios();
+    }//GEN-LAST:event_actualizar2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -873,11 +939,13 @@ public class FrmGestion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner ActualizarCategoria;
+    private javax.swing.JButton ActualizarContraseña;
     private javax.swing.JTextField ActualizarNombre;
     private javax.swing.JTextField ActualizarPrecio;
     private javax.swing.JButton ActualizarProducto;
     private javax.swing.JTextField ActualizarStock;
     private javax.swing.JButton AgregarProducto;
+    private javax.swing.JButton CambiarPrivilegios;
     private javax.swing.JTextField CampoContraseña;
     private javax.swing.JTextField CampoNombre;
     private javax.swing.JTextField CampoPrecio;
@@ -888,6 +956,7 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Eleccion;
     private javax.swing.JTextField EliminarID;
     private javax.swing.JButton EliminarProducto;
+    private javax.swing.JButton EliminarUsuario;
     private javax.swing.JButton Exportar;
     private javax.swing.JPanel GestionUsuarios;
     private javax.swing.JPanel MovimientoVentas;
@@ -898,12 +967,9 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JTable TablaLista;
     private javax.swing.JTable TablaSalidas;
     private javax.swing.JTable TablaUsuarios;
+    private javax.swing.JComboBox<String> TipoRol;
     private javax.swing.JButton actualizar1;
     private javax.swing.JButton actualizar2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
