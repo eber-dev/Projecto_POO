@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Movimiento;
 import java.awt.Font;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import modelo.MovimientosDAO;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
@@ -34,6 +35,7 @@ public class FrmGestion extends javax.swing.JFrame {
     private static List<producto>lista2 = new ArrayList<>();
     private static List<Usuario>lista3 = new ArrayList<>();
     DefaultTableModel modelo1,modelo2,modelo3,modelo4;
+    producto producto;
     
     public FrmGestion() {
         initComponents();
@@ -142,7 +144,7 @@ public class FrmGestion extends javax.swing.JFrame {
         TablaLista = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        actualizar1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -158,7 +160,7 @@ public class FrmGestion extends javax.swing.JFrame {
         ActualizarProducto = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        EliminarID = new javax.swing.JTextField();
         EliminarProducto = new javax.swing.JButton();
         ActualizarNombre = new javax.swing.JTextField();
         ActualizarPrecio = new javax.swing.JTextField();
@@ -172,7 +174,7 @@ public class FrmGestion extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaUsuarios = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        actualizar2 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -335,9 +337,14 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel10.setText("Añadir Nuevo Producto:");
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/productos.png"))); // NOI18N
-        jButton1.setText("Actualizar");
+        actualizar1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/productos.png"))); // NOI18N
+        actualizar1.setText("Actualizar");
+        actualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar1ActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel15.setText("Nombre:");
@@ -390,15 +397,22 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel34.setText("ID:");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        EliminarID.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        EliminarID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                EliminarIDActionPerformed(evt);
             }
         });
 
         EliminarProducto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         EliminarProducto.setText("Eliminar");
+        EliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarProductoActionPerformed(evt);
+            }
+        });
+
+        ActualizarNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         ActualizarPrecio.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
@@ -426,7 +440,7 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGroup(StockProductosLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(actualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -490,7 +504,7 @@ public class FrmGestion extends javax.swing.JFrame {
                                         .addComponent(CategoriaNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(StockProductosLayout.createSequentialGroup()
                                         .addGap(112, 112, 112)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(EliminarID, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(EliminarProducto))
                                     .addComponent(jLabel10))
@@ -505,7 +519,7 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
+                        .addComponent(actualizar1))
                     .addGroup(StockProductosLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel7)
@@ -514,7 +528,7 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel34)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EliminarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
                             .addComponent(EliminarProducto))))
                 .addGroup(StockProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,9 +587,9 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel5.setText("Usuarios Registrados");
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/productos.png"))); // NOI18N
-        jButton5.setText("Actualizar");
+        actualizar2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        actualizar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/icons/productos.png"))); // NOI18N
+        actualizar2.setText("Actualizar");
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel21.setText("Ingrese el ID del usuario:");
@@ -635,7 +649,7 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(GestionUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(actualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel19)
                             .addComponent(jLabel24)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -673,7 +687,7 @@ public class FrmGestion extends javax.swing.JFrame {
                     .addGroup(GestionUsuariosLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5))
+                        .addComponent(actualizar2))
                     .addGroup(GestionUsuariosLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -780,20 +794,57 @@ public class FrmGestion extends javax.swing.JFrame {
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
         // TODO add your handling code here:
+        productoDAO p = new productoDAO();
         String nombre = CampoNombre.getText();
         double precio = Double.parseDouble(CampoPrecio.getText());
         int stock = Integer.parseInt(CampoStock.getText());
         int nuevo = (Integer) CategoriaNuevo.getValue();
+        
+        producto = new producto(nombre,precio,stock,nuevo);
+        if(p.insertar(producto)){
+            JOptionPane.showMessageDialog(this, "Se añadio el producto correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "No se pudo añadir el producto");
+        }
 
     }//GEN-LAST:event_AgregarProductoActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void EliminarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_EliminarIDActionPerformed
 
     private void ActualizarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarProductoActionPerformed
         // TODO add your handling code here:
+        productoDAO p = new productoDAO();
+        String nombre = ActualizarNombre.getText();
+        double precio = Double.parseDouble(ActualizarPrecio.getText());
+        int stock = Integer.parseInt(ActualizarStock.getText());
+        int nuevo = (Integer) ActualizarCategoria.getValue();
+        int id = Integer.parseInt(RecibirID.getText());
+        
+        producto = new producto(id,nombre,precio,stock,nuevo);
+        if(p.actualizar(producto)){
+            JOptionPane.showMessageDialog(this, "Se actualizaron los valores del producto");
+        }else{
+            JOptionPane.showMessageDialog(this, "Hubo un error al ejecutar los cambios");
+        }
     }//GEN-LAST:event_ActualizarProductoActionPerformed
+
+    private void EliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarProductoActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(EliminarID.getText());
+        productoDAO p = new productoDAO();
+        if(p.eliminar(id)){
+            JOptionPane.showMessageDialog(this, "El producto fue eliminado correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar el producto");
+        }
+    }//GEN-LAST:event_EliminarProductoActionPerformed
+
+    private void actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar1ActionPerformed
+        // TODO add your handling code here:
+        lista();
+    }//GEN-LAST:event_actualizar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -835,6 +886,7 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JSpinner CategoriaNuevo;
     private javax.swing.JButton CerrarSesion;
     private javax.swing.JComboBox<String> Eleccion;
+    private javax.swing.JTextField EliminarID;
     private javax.swing.JButton EliminarProducto;
     private javax.swing.JButton Exportar;
     private javax.swing.JPanel GestionUsuarios;
@@ -846,9 +898,9 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JTable TablaLista;
     private javax.swing.JTable TablaSalidas;
     private javax.swing.JTable TablaUsuarios;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton actualizar1;
+    private javax.swing.JButton actualizar2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -888,6 +940,5 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
