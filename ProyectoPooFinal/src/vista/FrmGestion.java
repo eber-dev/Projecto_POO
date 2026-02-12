@@ -34,6 +34,8 @@ public class FrmGestion extends javax.swing.JFrame {
     private static List<Movimiento>lista1 = new ArrayList<>();
     private static List<producto>lista2 = new ArrayList<>();
     private static List<Usuario>lista3 = new ArrayList<>();
+    private double contador1 = 0;
+    private double contador2 = 0;
     DefaultTableModel modelo1,modelo2,modelo3,modelo4;
     producto producto;
     Usuario user;
@@ -62,6 +64,7 @@ public class FrmGestion extends javax.swing.JFrame {
         lista();
         usuarios();
         limitarspiner();
+        indicadores();
     }
     
     public void IngresosSalidas(){
@@ -108,6 +111,32 @@ public class FrmGestion extends javax.swing.JFrame {
         CategoriaNuevo.setModel(spin2);
     }
     
+    public void indicadores(){
+        productoDAO prod = new productoDAO();
+        MovimientosDAO mov = new MovimientosDAO();
+        List<Movimiento> reg = mov.listar();
+        List<producto> cat = prod.listar();
+        for(Movimiento p: reg){
+            for(producto c:cat){
+                switch(p.getTipo()){
+                    case "ENTRADA":
+                        if(c.getId()==p.getId_producto()){
+                            contador1+=(p.getCantidad()*c.getPrecio());
+                        }
+                        break;
+                    case "SALIDA":
+                        if(c.getId()==p.getId_producto()){
+                            contador2+=(p.getCantidad()*c.getPrecio());
+                        }
+                        break;
+                }
+            }
+            MostrarIngresos.setText(String.format("S/ %,.2f", contador1));
+            MostrarSalidas.setText(String.format("S/ %,.2f", contador2));
+            MostrarGanancia.setText(String.format("S/ %,.2f", contador1-contador2));
+            
+        }
+    }
     
 
 
@@ -138,6 +167,11 @@ public class FrmGestion extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         Exportar = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        MostrarIngresos = new javax.swing.JLabel();
+        MostrarSalidas = new javax.swing.JLabel();
+        MostrarGanancia = new javax.swing.JLabel();
         StockProductos = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -257,7 +291,19 @@ public class FrmGestion extends javax.swing.JFrame {
         });
 
         jLabel28.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel28.setText("Ganancia total");
+        jLabel28.setText("Ingresos:");
+
+        jLabel35.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel35.setText("Salidas:");
+
+        jLabel36.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jLabel36.setText("Ganancia total");
+
+        MostrarIngresos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        MostrarSalidas.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        MostrarGanancia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout MovimientoVentasLayout = new javax.swing.GroupLayout(MovimientoVentas);
         MovimientoVentas.setLayout(MovimientoVentasLayout);
@@ -275,7 +321,13 @@ public class FrmGestion extends javax.swing.JFrame {
                             .addGroup(MovimientoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Eleccion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Exportar)))))
+                                .addComponent(Exportar))
+                            .addComponent(jLabel35)
+                            .addGroup(MovimientoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(MostrarGanancia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(MostrarSalidas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(MostrarIngresos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(MovimientoVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel27)
@@ -303,11 +355,21 @@ public class FrmGestion extends javax.swing.JFrame {
                         .addGap(23, 23, 23))
                     .addGroup(MovimientoVentasLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MostrarIngresos, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(MostrarSalidas, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel36)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MostrarGanancia, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Eleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Exportar)
@@ -959,6 +1021,9 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JButton EliminarUsuario;
     private javax.swing.JButton Exportar;
     private javax.swing.JPanel GestionUsuarios;
+    private javax.swing.JLabel MostrarGanancia;
+    private javax.swing.JLabel MostrarIngresos;
+    private javax.swing.JLabel MostrarSalidas;
     private javax.swing.JPanel MovimientoVentas;
     private javax.swing.JTabbedPane Multipanel;
     private javax.swing.JTextField RecibirID;
@@ -996,6 +1061,8 @@ public class FrmGestion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
