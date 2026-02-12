@@ -33,6 +33,16 @@ public class Usuario {
         this.rol = rol;
     }
     
+    public Usuario(int id_usuario,String rol){
+        this.id_usuario = id_usuario;
+        this.rol = rol;
+    }
+    
+    public Usuario(String contraseña,int id_usuario){
+        this.id_usuario = id_usuario;
+        this.password = contraseña;
+    }
+    
 
     public int getId_usuario() {
         return id_usuario;
