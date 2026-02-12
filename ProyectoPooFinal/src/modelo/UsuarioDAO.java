@@ -65,6 +65,52 @@ public class UsuarioDAO {
 
     }
     
+    public boolean actualizarprivilegios(Usuario u){
+        String sql = "UPDATE usuarios SET rol = ?" + "WHERE id_usuario = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+            PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            try(Statement stmt = conexion.createStatement()){
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
+            ps.setString(1, u.getRol());
+            ps.setInt(2, u.getId_usuario());
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean actualizarpassword(Usuario u){
+        String sql = "UPDATE usuarios SET password = ?"+"WHERE id_usuario = ?";
+        String url = "jdbc:sqlite:data/almacen.db";
+        
+        try(Connection conexion = DriverManager.getConnection(url);
+            PreparedStatement ps = conexion.prepareStatement(sql)){
+            
+            try(Statement stmt = conexion.createStatement()){
+                stmt.execute("PRAGMA foreign_keys = ON");
+            }
+            
+            ps.setString(1, u.getPassword());
+            ps.setInt(2, u.getId_usuario());
+            
+            int filas = ps.executeUpdate();
+            return filas>0;
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public boolean eliminar(int id){
         String sql = "DELETE FROM usuarios WHERE id_usuario = ?";
         String url = "jdbc:sqlite:data/almacen.db";
