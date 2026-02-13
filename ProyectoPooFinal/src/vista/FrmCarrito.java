@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Movimiento;
 import modelo.producto;
 import modelo.productoDAO;
+import java.time.LocalDate;
+import modelo.MovimientosDAO;
 
 /**
  *
@@ -27,6 +30,7 @@ public class FrmCarrito extends javax.swing.JFrame {
     private static List<producto> lista = new ArrayList<>();
     DefaultTableModel modelo;
     private double contador = 0;
+    Movimiento venta;
     public FrmCarrito(List<producto> lista) {
         initComponents();
         this.setResizable(true);
@@ -250,7 +254,20 @@ public class FrmCarrito extends javax.swing.JFrame {
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Compra completada");
+        productoDAO prod = new productoDAO();
+        MovimientosDAO mov = new MovimientosDAO();
+        LocalDate fecha_actual = LocalDate.now();
+        String fecha = fecha_actual.toString();
+        List<producto> total = prod.listar();
+        for(producto p: lista){
+            for(producto c: total){
+                if(c.getNombre().equals(p.getNombre())){
+                    venta = new Movimiento(c.getId(),"ENTRADA",p.getStock(),fecha);
+                }
+            }
+            mov.insertar(venta);
+        }
+        
     }//GEN-LAST:event_ComprarActionPerformed
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
