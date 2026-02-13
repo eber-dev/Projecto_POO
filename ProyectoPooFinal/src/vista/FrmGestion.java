@@ -17,6 +17,7 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 import modelo.producto;
 import modelo.productoDAO;
+import java.time.LocalDate;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -39,6 +40,7 @@ public class FrmGestion extends javax.swing.JFrame {
     DefaultTableModel modelo1,modelo2,modelo3,modelo4;
     producto producto;
     Usuario user;
+    Movimiento compra;
     
     public FrmGestion() {
         initComponents();
@@ -878,7 +880,10 @@ public class FrmGestion extends javax.swing.JFrame {
 
     private void AgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProductoActionPerformed
         // TODO add your handling code here:
+        MovimientosDAO mov = new MovimientosDAO();
         productoDAO p = new productoDAO();
+        LocalDate fecha_actual =LocalDate.now();
+        String fecha = fecha_actual.toString();
         String nombre = CampoNombre.getText();
         double precio = Double.parseDouble(CampoPrecio.getText());
         int stock = Integer.parseInt(CampoStock.getText());
@@ -887,6 +892,13 @@ public class FrmGestion extends javax.swing.JFrame {
         producto = new producto(nombre,precio,stock,nuevo);
         if(p.insertar(producto)){
             JOptionPane.showMessageDialog(this, "Se añadio el producto correctamente");
+            List<producto> total = p.listar();
+            for(producto m: total){
+                if(nombre.equals(m.getNombre())){
+                    compra = new Movimiento(m.getId(),"SALIDA",stock,fecha);
+                }
+            }
+            mov.insertar(compra);
         }else{
             JOptionPane.showMessageDialog(this, "No se pudo añadir el producto");
         }
