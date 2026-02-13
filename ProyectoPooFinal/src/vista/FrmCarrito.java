@@ -256,6 +256,7 @@ public class FrmCarrito extends javax.swing.JFrame {
         // TODO add your handling code here:
         productoDAO prod = new productoDAO();
         MovimientosDAO mov = new MovimientosDAO();
+        boolean valido = false;
         LocalDate fecha_actual = LocalDate.now();
         String fecha = fecha_actual.toString();
         List<producto> total = prod.listar();
@@ -265,7 +266,13 @@ public class FrmCarrito extends javax.swing.JFrame {
                     venta = new Movimiento(c.getId(),"ENTRADA",p.getStock(),fecha);
                 }
             }
-            mov.insertar(venta);
+            valido = mov.insertar(venta);
+        }
+        
+        if(valido){
+            JOptionPane.showMessageDialog(this, "Su compra fue realizada correctamente");
+        }else{
+            JOptionPane.showMessageDialog(this, "Hubo un error al concretar la compra");
         }
         
     }//GEN-LAST:event_ComprarActionPerformed
