@@ -931,6 +931,10 @@ public class FrmGestion extends javax.swing.JFrame {
                 }
             }
             mov.insertar(compra);
+            CampoNombre.setText("");
+            CampoPrecio.setText("");
+            CampoStock.setText("");
+            CategoriaNuevo.setValue(1);
         }else{
             JOptionPane.showMessageDialog(this, "No se pudo añadir el producto");
         }
@@ -953,6 +957,12 @@ public class FrmGestion extends javax.swing.JFrame {
         producto = new producto(id,nombre,precio,stock,nuevo);
         if(p.actualizar(producto)){
             JOptionPane.showMessageDialog(this, "Se actualizaron los valores del producto");
+            ActualizarNombre.setText("");
+            ActualizarPrecio.setText("");
+            ActualizarStock.setText("");
+            ActualizarCategoria.setValue(1);
+            RecibirID.setText("");
+            
         }else{
             JOptionPane.showMessageDialog(this, "Hubo un error al ejecutar los cambios");
         }
@@ -964,6 +974,7 @@ public class FrmGestion extends javax.swing.JFrame {
         productoDAO p = new productoDAO();
         if(p.eliminar(id)){
             JOptionPane.showMessageDialog(this, "El producto fue eliminado correctamente");
+            EliminarID.setText("");
         }else{
             JOptionPane.showMessageDialog(this, "No se pudo eliminar el producto");
         }
@@ -980,6 +991,7 @@ public class FrmGestion extends javax.swing.JFrame {
         int id_usuario = Integer.parseInt(CampoUsuario.getText());
         if(u.eliminar(id_usuario)){
             JOptionPane.showMessageDialog(this, "Credenciales eliminadas correctamente");
+            CampoUsuario.setText("");
         }else{
             JOptionPane.showMessageDialog(this, "Hubo un error al eliminar las credenciales");
         }
@@ -994,6 +1006,8 @@ public class FrmGestion extends javax.swing.JFrame {
         user = new Usuario(id_usuario,privilegio);
         if(u.actualizarprivilegios(user)){
             JOptionPane.showMessageDialog(this, "Se modificaron los privilegios del usuario con ID" + id_usuario);
+            CampoUsuario.setText("");
+            TipoRol.setSelectedIndex(0);
         }else{
             JOptionPane.showMessageDialog(this, "No se pudieron modificar los privilegios");
         }
@@ -1008,6 +1022,8 @@ public class FrmGestion extends javax.swing.JFrame {
         user = new Usuario(clave,id_usuario);
         if(u.actualizarpassword(user)){
             JOptionPane.showMessageDialog(this, "La contraseña se actualizo correctamente");
+            CampoContraseña.setText("");
+            CampoUsuario.setText("");
         }else{
             JOptionPane.showMessageDialog(this, "No se pudo actualizar la contraseña");
         }
