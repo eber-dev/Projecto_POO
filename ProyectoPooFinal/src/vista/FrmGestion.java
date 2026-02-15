@@ -1000,7 +1000,7 @@ public class FrmGestion extends javax.swing.JFrame {
         int id;
         boolean condicion = EliminarID.getText().trim().isEmpty();
         if(condicion){
-            JOptionPane.showMessageDialog(this, "Debe ingresar el ID del producto");
+            JOptionPane.showMessageDialog(this, "Debe ingresar el ID del producto para poder eliminar");
             return;
         }else{
             id=Integer.parseInt(EliminarID.getText());
@@ -1065,14 +1065,24 @@ public class FrmGestion extends javax.swing.JFrame {
     private void ActualizarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarContraseñaActionPerformed
         // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
-        int id_usuario=0;
-        if(CampoUsuario.getText().trim().isEmpty()){
+        int id_usuario;
+        String clave;
+        boolean condicion1 = CampoUsuario.getText().trim().isEmpty();
+        boolean condicion2 = CampoContraseña.getText().trim().isEmpty();
+        if(condicion1){
             JOptionPane.showMessageDialog(this, "El campo del ID no puede estar vacio");
+            return;
         }else{
             id_usuario = Integer.parseInt(CampoUsuario.getText()); 
         }
         
-        String clave = CampoContraseña.getText();
+        if(condicion2){
+            JOptionPane.showMessageDialog(this, "Debe ingresar una constraseña");
+            return;
+        }else{
+            clave = CampoContraseña.getText();
+        }
+
         user = new Usuario(clave,id_usuario); 
         if(u.actualizarpassword(user)){
             JOptionPane.showMessageDialog(this, "La contraseña se actualizo correctamente");
