@@ -114,7 +114,15 @@ public class FrmCarrito extends javax.swing.JFrame {
             new String [] {
                 "Producto", "Categoria", "Precio Unitario", "Cantidad", "Importe"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TablaCarro);
 
         Comprar.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
