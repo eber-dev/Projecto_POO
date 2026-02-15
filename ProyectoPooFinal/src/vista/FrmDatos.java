@@ -197,7 +197,7 @@ public class FrmDatos extends javax.swing.JFrame {
         }
         
         if(condicion2){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un rol valido o USER o ADMIN");
+            JOptionPane.showMessageDialog(this, "No ha seleccionado un rol para el usuario");
             return;
         }
         
