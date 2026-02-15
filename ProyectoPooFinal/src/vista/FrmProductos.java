@@ -8,8 +8,10 @@ import java.util.List;
 import modelo.producto;
 import controlador.ControladorProducto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import modelo.productoDAO;
 
 /**
  *
@@ -680,51 +682,120 @@ public class FrmProductos extends javax.swing.JFrame {
 
     private void añadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir1ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String laptop = Laptop.getSelectedItem().toString();
         int cantidadlaptop = (Integer) CantidadLaptop.getValue();
-        adquirido = new producto(laptop,cantidadlaptop);
-        compras.add(adquirido);
+        for(producto p: cat){
+            if(p.getNombre().equals(laptop)){
+                if(p.getStock()>cantidadlaptop){
+                    adquirido = new producto(laptop,cantidadlaptop);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible");
+                }
+                break;
+            }
+        }
 
     }//GEN-LAST:event_añadir1ActionPerformed
 
     private void añadir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir2ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat  = prod.listar();
         String computadora = Pc.getSelectedItem().toString();
         int cantidadcomputadora = (Integer) CantidadPc.getValue();
-        adquirido = new producto(computadora,cantidadcomputadora);
-        compras.add(adquirido);
+        for(producto p:cat){
+            if(p.getNombre().equals(computadora)){
+                if(p.getStock()>cantidadcomputadora){
+                    adquirido = new producto(computadora,cantidadcomputadora);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible");
+                }
+                break;
+            }
+        }
+        
     }//GEN-LAST:event_añadir2ActionPerformed
 
     private void añadir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir3ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String componentes = Componentes.getSelectedItem().toString();
         int cantidadcomponentes = (Integer) CantidadComponentes.getValue();
-        adquirido = new producto(componentes,cantidadcomponentes);
-        compras.add(adquirido);
+        for(producto p: cat){
+            if(p.getNombre().equals(componentes)){
+                if(p.getStock()>cantidadcomponentes){
+                    adquirido = new producto(componentes,cantidadcomponentes);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible");
+                }
+                break;
+            }
+        }
     }//GEN-LAST:event_añadir3ActionPerformed
 
     private void añadir7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir7ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String celulares = Celulares.getSelectedItem().toString();
         int cantidadcelulares = (Integer) CantidadCelulares.getValue();
-        adquirido = new producto(celulares,cantidadcelulares);
-        compras.add(adquirido);
+        for(producto p: cat){
+            if(p.getNombre().equals(celulares)){
+                if(p.getStock()>cantidadcelulares){
+                    adquirido = new producto(celulares,cantidadcelulares);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible"); 
+                }
+                break;
+            }
+        }
+        
     }//GEN-LAST:event_añadir7ActionPerformed
 
     private void añadir8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir8ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String accesorio = Accesorios.getSelectedItem().toString();
         int cantidadaccesorio = (Integer) CantidadAccesorios.getValue();
-        adquirido = new producto(accesorio,cantidadaccesorio);
-        compras.add(adquirido);
+        for(producto p:cat){
+            if(p.getNombre().equals(accesorio)){
+                if(p.getStock()>cantidadaccesorio){
+                    adquirido = new producto(accesorio,cantidadaccesorio);
+                    compras.add(adquirido); 
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible"); 
+                }
+                break;
+            }
+        }
     }//GEN-LAST:event_añadir8ActionPerformed
 
     private void añadir9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir9ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String red = Redes.getSelectedItem().toString();
         int cantidadred = (Integer) CantidadRedes.getValue();
-        adquirido = new producto(red,cantidadred);
-        compras.add(adquirido);
+        for(producto p: cat){
+            if(p.getNombre().equals(red)){
+                if(p.getStock()>cantidadred){
+                    adquirido = new producto(red,cantidadred);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible"); 
+                }
+                break;
+            }
+        }
+        
     }//GEN-LAST:event_añadir9ActionPerformed
 
     private void LaptopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaptopActionPerformed
@@ -733,10 +804,22 @@ public class FrmProductos extends javax.swing.JFrame {
 
     private void añadir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadir4ActionPerformed
         // TODO add your handling code here:
+        productoDAO prod = new productoDAO();
+        List<producto> cat = prod.listar();
         String perifericos = Perifericos.getSelectedItem().toString();
         int cantidadperifericos = (Integer) CantidadPerifericos.getValue();
-        adquirido = new producto(perifericos,cantidadperifericos);
-        compras.add(adquirido);
+        for(producto p: cat){
+            if(p.getNombre().equals(perifericos)){
+                if(p.getStock()>cantidadperifericos){
+                    adquirido = new producto(perifericos,cantidadperifericos);
+                    compras.add(adquirido);
+                }else{
+                    JOptionPane.showMessageDialog(this, "No tenemos esa cantidad de stock disponible");
+                }
+                break;
+            }
+        }
+
     }//GEN-LAST:event_añadir4ActionPerformed
 
     private void VerCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerCarritoActionPerformed
