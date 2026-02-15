@@ -264,6 +264,7 @@ public class FrmCarrito extends javax.swing.JFrame {
             for(producto c: total){
                 if(c.getNombre().equals(p.getNombre())){
                     venta = new Movimiento(c.getId(),"ENTRADA",p.getStock(),fecha);
+                    prod.actualizar_stock(c.getId(), c.getStock()-p.getStock());
                 }
             }
             valido = mov.insertar(venta);
