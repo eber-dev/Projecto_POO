@@ -920,10 +920,22 @@ public class FrmGestion extends javax.swing.JFrame {
         productoDAO p = new productoDAO();
         LocalDate fecha_actual =LocalDate.now();
         String fecha = fecha_actual.toString();
-        String nombre = CampoNombre.getText();
-        double precio = Double.parseDouble(CampoPrecio.getText());
-        int stock = Integer.parseInt(CampoStock.getText());
-        int nuevo = (Integer) CategoriaNuevo.getValue();
+        String nombre;
+        double precio;
+        int stock,nuevo;
+        boolean condicion = CampoNombre.getText().trim().isEmpty() || CampoPrecio.getText().trim().isEmpty() || CampoStock.getText().trim().isEmpty();
+        
+        if(condicion){
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+            return;
+        }else{
+            nombre = CampoNombre.getText();
+            precio = Double.parseDouble(CampoPrecio.getText());
+            stock = Integer.parseInt(CampoStock.getText());
+            nuevo = (Integer) CategoriaNuevo.getValue();
+            
+        }
+                
         
         producto = new producto(nombre,precio,stock,nuevo);
         if(p.insertar(producto)){
@@ -953,8 +965,8 @@ public class FrmGestion extends javax.swing.JFrame {
         // TODO add your handling code here:
         productoDAO p = new productoDAO();
         String nombre;
-        double precio=0;
-        int stock=0,nuevo=0, id=0;
+        double precio;
+        int stock,nuevo, id;
         boolean condicion1 = ActualizarNombre.getText().trim().isEmpty() || ActualizarPrecio.getText().trim().isEmpty() || ActualizarStock.getText().trim().isEmpty() || RecibirID.getText().trim().isEmpty();
         
         if(condicion1){
