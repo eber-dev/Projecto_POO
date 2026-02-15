@@ -1022,7 +1022,15 @@ public class FrmGestion extends javax.swing.JFrame {
     private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
         // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
-        int id_usuario = Integer.parseInt(CampoUsuario.getText());
+        int id_usuario;
+        boolean condicion = CampoUsuario.getText().trim().isEmpty();
+        if(condicion){
+            JOptionPane.showMessageDialog(this, "Debe ingresar el id para eliminar a un usuario");
+            return;
+        }else{
+            id_usuario = Integer.parseInt(CampoUsuario.getText());
+        }
+        
         if(u.eliminar(id_usuario)){
             JOptionPane.showMessageDialog(this, "Credenciales eliminadas correctamente");
             CampoUsuario.setText("");
