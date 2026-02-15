@@ -952,12 +952,23 @@ public class FrmGestion extends javax.swing.JFrame {
     private void ActualizarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarProductoActionPerformed
         // TODO add your handling code here:
         productoDAO p = new productoDAO();
-        String nombre = ActualizarNombre.getText();
-        double precio = Double.parseDouble(ActualizarPrecio.getText());
-        int stock = Integer.parseInt(ActualizarStock.getText());
-        int nuevo = (Integer) ActualizarCategoria.getValue();
-        int id = Integer.parseInt(RecibirID.getText());
+        String nombre;
+        double precio=0;
+        int stock=0,nuevo=0, id=0;
+        boolean condicion1 = ActualizarNombre.getText().trim().isEmpty() || ActualizarPrecio.getText().trim().isEmpty() || ActualizarStock.getText().trim().isEmpty() || RecibirID.getText().trim().isEmpty();
         
+        if(condicion1){
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+            return;
+        }else{
+            nombre = ActualizarNombre.getText();
+            precio = Double.parseDouble(ActualizarPrecio.getText());
+            stock = Integer.parseInt(ActualizarStock.getText());
+            nuevo = (Integer) ActualizarCategoria.getValue();
+            id = Integer.parseInt(RecibirID.getText());
+            
+        }
+               
         producto = new producto(id,nombre,precio,stock,nuevo);
         if(p.actualizar(producto)){
             JOptionPane.showMessageDialog(this, "Se actualizaron los valores del producto");
@@ -1002,7 +1013,7 @@ public class FrmGestion extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarUsuarioActionPerformed
 
     private void CambiarPrivilegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarPrivilegiosActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
         int id_usuario = 0;
         if(CampoUsuario.getText().trim().isEmpty()){
@@ -1035,7 +1046,7 @@ public class FrmGestion extends javax.swing.JFrame {
         }
         
         String clave = CampoContraseña.getText();
-        user = new Usuario(clave,id_usuario);
+        user = new Usuario(clave,id_usuario); 
         if(u.actualizarpassword(user)){
             JOptionPane.showMessageDialog(this, "La contraseña se actualizo correctamente");
             CampoContraseña.setText("");
