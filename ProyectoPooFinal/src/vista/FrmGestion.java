@@ -997,7 +997,14 @@ public class FrmGestion extends javax.swing.JFrame {
 
     private void EliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarProductoActionPerformed
         // TODO add your handling code here:
-        int id = Integer.parseInt(EliminarID.getText());
+        int id;
+        boolean condicion = EliminarID.getText().trim().isEmpty();
+        if(condicion){
+            JOptionPane.showMessageDialog(this, "Debe ingresar el ID del producto");
+            return;
+        }else{
+            id=Integer.parseInt(EliminarID.getText());
+        }
         productoDAO p = new productoDAO();
         if(p.eliminar(id)){
             JOptionPane.showMessageDialog(this, "El producto fue eliminado correctamente");
