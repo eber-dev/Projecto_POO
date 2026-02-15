@@ -1042,14 +1042,23 @@ public class FrmGestion extends javax.swing.JFrame {
     private void CambiarPrivilegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarPrivilegiosActionPerformed
          // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
-        int id_usuario = 0;
-        if(CampoUsuario.getText().trim().isEmpty()){
+        int id_usuario;
+        String privilegio;
+        boolean condicion1 = CampoUsuario.getText().trim().isEmpty();
+        boolean condicion2 = TipoRol.getSelectedItem().toString().equals("Seleccione");
+        if(condicion1){
             JOptionPane.showMessageDialog(this, "El campo del ID no puede estar vacio");
+            return;
         }else{
             id_usuario = Integer.parseInt(CampoUsuario.getText());
         }
         
-        String privilegio = TipoRol.getSelectedItem().toString();
+        if(condicion2){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el tipo de usuario");
+            return;
+        }else{
+            privilegio = TipoRol.getSelectedItem().toString();
+        }
         
         user = new Usuario(id_usuario,privilegio);
         if(u.actualizarprivilegios(user)){
