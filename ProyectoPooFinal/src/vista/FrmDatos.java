@@ -188,6 +188,19 @@ public class FrmDatos extends javax.swing.JFrame {
         String contraseña = CampoContraseña.getText();
         String perfil = Perfil.getSelectedItem().toString();
         
+        boolean condicion1 = nombre.isEmpty() || apellido.isEmpty() || usuario.isEmpty() || contraseña.isEmpty();
+        boolean condicion2 = perfil.equals("Seleccione");
+        
+        if(condicion1){
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
+            return;
+        }
+        
+        if(condicion2){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un rol valido o USER o ADMIN");
+            return;
+        }
+        
         UsuarioDAO u = new UsuarioDAO();
         Usuario nuevo = new Usuario(nombre,apellido,usuario,contraseña,perfil);
         
