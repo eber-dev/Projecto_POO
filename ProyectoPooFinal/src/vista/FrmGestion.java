@@ -255,7 +255,15 @@ public class FrmGestion extends javax.swing.JFrame {
             new String [] {
                 "ID_mov", "ID_prod", "Tipo", "Cantidad", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(TablaIngresos);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -269,7 +277,15 @@ public class FrmGestion extends javax.swing.JFrame {
             new String [] {
                 "ID_mov", "ID_prod", "Tipo", "Cantidad", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(TablaSalidas);
 
         jLabel26.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -393,7 +409,15 @@ public class FrmGestion extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nombre", "Precio", "Stock", "Categoria"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(TablaLista);
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -647,7 +671,15 @@ public class FrmGestion extends javax.swing.JFrame {
             new String [] {
                 "ID", "Nombre", "Apellido", "Usuario", "Contraseña", "Rol"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(TablaUsuarios);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
