@@ -897,6 +897,10 @@ public class FrmGestion extends javax.swing.JFrame {
         try{
             obj= new ExportarExcel();
             String opcion = Eleccion.getSelectedItem().toString();
+            if(opcion.equals("Seleccione")){
+                JOptionPane.showMessageDialog(this, "Debe seleccionar que tabla desea exportar");
+                return;
+            }
             switch(opcion){
                 case "Ingresos":
                     obj.exportarExcel(TablaIngresos);
