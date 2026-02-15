@@ -1000,7 +1000,13 @@ public class FrmGestion extends javax.swing.JFrame {
     private void CambiarPrivilegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambiarPrivilegiosActionPerformed
         // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
-        int id_usuario = Integer.parseInt(CampoUsuario.getText());
+        int id_usuario = 0;
+        if(CampoUsuario.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo del ID no puede estar vacio");
+        }else{
+            id_usuario = Integer.parseInt(CampoUsuario.getText());
+        }
+        
         String privilegio = TipoRol.getSelectedItem().toString();
         
         user = new Usuario(id_usuario,privilegio);
@@ -1017,8 +1023,14 @@ public class FrmGestion extends javax.swing.JFrame {
     private void ActualizarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarContraseñaActionPerformed
         // TODO add your handling code here:
         UsuarioDAO u = new UsuarioDAO();
+        int id_usuario=0;
+        if(CampoUsuario.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo del ID no puede estar vacio");
+        }else{
+            id_usuario = Integer.parseInt(CampoUsuario.getText()); 
+        }
+        
         String clave = CampoContraseña.getText();
-        int id_usuario = Integer.parseInt(CampoUsuario.getText());
         user = new Usuario(clave,id_usuario);
         if(u.actualizarpassword(user)){
             JOptionPane.showMessageDialog(this, "La contraseña se actualizo correctamente");
